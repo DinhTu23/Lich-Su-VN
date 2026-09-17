@@ -1,0 +1,714 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Vua Hùng Dựng Nước</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Serif+Display:ital,wght@0,500;0,700;1,500&family=Noto+Sans:wght@400;500;600;700&display=swap">
+
+<style>
+/* ── tokens ───────────────────────────────────────────── */
+:root{
+  --bg:#f4ecda;
+  --surface:#fffdf7;
+  --surface-2:#eadfc4;
+  --ink:#2a2015;
+  --ink-soft:#6a5842;
+  --ink-faint:#8b7a61;
+  --border:#d7c4a0;
+  --border-soft:#e4d6b8;
+  --accent:#9c5322;
+  --accent-deep:#6d3813;
+  --name-ink:#2c6136;
+  --name-line:#7fb98c;
+  --marker:#ffdf5e;
+  --marker-ink:#3d2f0a;
+  --shadow:0 1px 2px rgba(74,53,25,.06), 0 8px 24px rgba(74,53,25,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#16120c;
+    --surface:#1f1910;
+    --surface-2:#2a2217;
+    --ink:#ece1cb;
+    --ink-soft:#b7a686;
+    --ink-faint:#8d7d63;
+    --border:#453a25;
+    --border-soft:#372e1e;
+    --accent:#dd9d59;
+    --accent-deep:#f0bd85;
+    --name-ink:#8fd39c;
+    --name-line:#3f6b45;
+    --marker:rgba(226,177,49,.34);
+    --marker-ink:#f6e3ab;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px rgba(0,0,0,.34);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#16120c;
+  --surface:#1f1910;
+  --surface-2:#2a2217;
+  --ink:#ece1cb;
+  --ink-soft:#b7a686;
+  --ink-faint:#8d7d63;
+  --border:#453a25;
+  --border-soft:#372e1e;
+  --accent:#dd9d59;
+  --accent-deep:#f0bd85;
+  --name-ink:#8fd39c;
+  --name-line:#3f6b45;
+  --marker:rgba(226,177,49,.34);
+  --marker-ink:#f6e3ab;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px rgba(0,0,0,.34);
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"Noto Serif",Georgia,"Times New Roman",serif;
+  font-size:17px;
+  line-height:1.8;
+  padding-inline:18px;
+  padding-block:0 56px;
+}
+
+/* ── progress ─────────────────────────────────────────── */
+.progress-wrap{
+  position:fixed; top:0; left:0; right:0; z-index:40;
+  padding-top:env(safe-area-inset-top, 0px);
+  pointer-events:none;
+}
+.progress-bar{height:3px; width:0%; background:var(--accent);}
+
+/* ── page grid ────────────────────────────────────────── */
+.page{
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  gap:0;
+  justify-content:center;
+  margin:0 auto;
+  padding-top:38px;
+}
+.rail{display:none;}
+.content{min-width:0;}
+
+/* ── hero ─────────────────────────────────────────────── */
+.hero{
+  border-bottom:1px solid var(--border);
+  padding-bottom:26px;
+  margin-bottom:34px;
+}
+.eyebrow{
+  font-family:"Noto Sans",system-ui,sans-serif;
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  font-size:.68rem;
+  font-weight:700;
+  color:var(--accent);
+}
+h1{
+  font-family:"Noto Serif Display","Noto Serif",Georgia,serif;
+  font-weight:700;
+  font-size:clamp(1.75rem,5vw,2.6rem);
+  line-height:1.2;
+  margin:.28em 0 .4em;
+  text-wrap:balance;
+  letter-spacing:-.01em;
+}
+.period{
+  display:inline-block;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.82rem;
+  font-weight:600;
+  color:var(--accent-deep);
+  border:1px solid var(--accent);
+  border-radius:999px;
+  padding:.2em .9em;
+}
+.legend{
+  display:flex; flex-wrap:wrap; align-items:center; gap:8px 18px;
+  margin:20px 0 0;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.76rem;
+  color:var(--ink-faint);
+}
+.legend-hint{font-style:italic;}
+
+/* ── highlights ───────────────────────────────────────── */
+.nv{
+  font-weight:600;
+  color:var(--name-ink);
+  border-bottom:2px solid var(--name-line);
+  cursor:help;
+  border-radius:1px;
+}
+.nv:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+.tg{
+  font-weight:600;
+  color:var(--marker-ink);
+  background-image:linear-gradient(transparent 12%, var(--marker) 12%, var(--marker) 92%, transparent 92%);
+  padding:0 .18em;
+  border-radius:2px;
+}
+.tip{
+  position:fixed; z-index:60;
+  background:var(--surface);
+  color:var(--ink);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:10px 13px;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.8rem;
+  line-height:1.55;
+  box-shadow:var(--shadow);
+}
+
+/* ── table of contents rail ───────────────────────────── */
+.toc-title{
+  font-family:"Noto Sans",system-ui,sans-serif;
+  text-transform:uppercase; letter-spacing:.14em;
+  font-size:.64rem; font-weight:700;
+  color:var(--ink-faint);
+  margin-bottom:12px;
+}
+.toc-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:2px;}
+.toc-list a{
+  display:block;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.79rem;
+  line-height:1.4;
+  color:var(--ink-soft);
+  text-decoration:none;
+  padding:6px 0 6px 12px;
+  border-left:2px solid var(--border-soft);
+}
+.toc-list a:hover{color:var(--accent-deep);}
+.toc-list a.is-active{
+  color:var(--accent-deep);
+  font-weight:600;
+  border-left-color:var(--accent);
+}
+
+/* ── prose ────────────────────────────────────────────── */
+.prose{max-width:100%;}
+.prose p{margin:0 0 1.15em;}
+h2{
+  font-family:"Noto Serif Display","Noto Serif",Georgia,serif;
+  font-size:1.42rem;
+  font-weight:700;
+  color:var(--ink);
+  margin:2.6em 0 .85em;
+  text-wrap:balance;
+}
+h2 .h2-num{
+  display:block;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.64rem; font-weight:700;
+  letter-spacing:.16em; text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:.35em;
+}
+.lede{
+  font-family:"Noto Serif Display","Noto Serif",serif;
+  font-size:1.1rem;
+  font-style:italic;
+  color:var(--ink-soft);
+  line-height:1.7;
+}
+
+/* ── sidenote ─────────────────────────────────────────── */
+.sidenote{
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.82rem;
+  line-height:1.65;
+  color:var(--ink-soft);
+  border-left:3px solid var(--accent);
+  background:var(--surface-2);
+  border-radius:0 8px 8px 0;
+  padding:12px 15px;
+  margin:0 0 1.4em;
+}
+.sidenote b{
+  display:block;
+  color:var(--accent-deep);
+  font-weight:700;
+  font-size:.7rem;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  margin-bottom:.4em;
+}
+.sidenote i{font-style:italic;}
+
+/* ── bands (full content width) ───────────────────────── */
+.band{margin:2.8em 0;}
+.band-title{
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.68rem; font-weight:700;
+  letter-spacing:.16em; text-transform:uppercase;
+  color:var(--accent);
+  margin:0 0 16px;
+}
+.band-foot{
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.72rem;
+  color:var(--ink-faint);
+  margin:12px 0 0;
+  font-style:italic;
+}
+
+/* timeline */
+.timeline{
+  list-style:none; margin:0; padding:0;
+  display:flex;
+  overflow-x:auto;
+  scrollbar-width:thin;
+  padding-bottom:6px;
+}
+.timeline li{
+  flex:1 0 152px;
+  min-width:152px;
+  position:relative;
+  border-top:2px solid var(--border);
+  padding:18px 14px 0 0;
+}
+.timeline li::before{
+  content:"";
+  position:absolute; top:-6px; left:0;
+  width:10px; height:10px; border-radius:50%;
+  background:var(--bg);
+  border:2px solid var(--accent);
+}
+.timeline li:last-child::before{background:var(--accent);}
+.tl-when{
+  display:block;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.7rem; font-weight:700;
+  letter-spacing:.04em;
+  color:var(--accent-deep);
+  font-variant-numeric:tabular-nums;
+}
+.tl-what{
+  display:block;
+  font-family:"Noto Serif Display","Noto Serif",serif;
+  font-size:.98rem; font-weight:700;
+  line-height:1.35;
+  margin:.25em 0 .2em;
+}
+.tl-note{
+  display:block;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.74rem;
+  line-height:1.5;
+  color:var(--ink-soft);
+}
+
+/* hierarchy diagram */
+.tiers{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; align-items:center; gap:0;}
+.tiers li{
+  width:100%;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:13px 18px;
+  text-align:center;
+}
+.tiers li + li{margin-top:22px; position:relative;}
+.tiers li + li::before{
+  content:"";
+  position:absolute; top:-18px; left:50%;
+  width:2px; height:14px;
+  background:var(--border);
+  transform:translateX(-50%);
+}
+.tier-role{
+  display:block;
+  font-family:"Noto Serif Display","Noto Serif",serif;
+  font-weight:700;
+  font-size:1.02rem;
+  color:var(--accent-deep);
+}
+.tier-desc{
+  display:block;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.78rem;
+  color:var(--ink-soft);
+  line-height:1.5;
+  margin-top:.15em;
+}
+
+/* memo cards */
+.memo{
+  list-style:none; margin:0; padding:0;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(215px,1fr));
+  gap:12px;
+}
+.memo li{
+  background:var(--surface);
+  border:1px solid var(--border-soft);
+  border-top:3px solid var(--accent);
+  border-radius:8px;
+  padding:14px 16px;
+  font-size:.88rem;
+  line-height:1.65;
+}
+
+/* quiz cards */
+.quiz{
+  list-style:none; margin:0; padding:0;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(235px,1fr));
+  gap:14px;
+  counter-reset:q;
+}
+.quiz li{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:16px 18px;
+  display:flex;
+  flex-direction:column;
+}
+.q-num{
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.64rem; font-weight:700;
+  letter-spacing:.14em;
+  color:var(--accent);
+  margin-bottom:.5em;
+}
+.q-text{
+  font-weight:600;
+  font-size:.94rem;
+  line-height:1.6;
+  margin:0 0 auto;
+}
+.quiz details{
+  margin-top:14px;
+  border-top:1px dashed var(--border);
+  padding-top:11px;
+}
+.quiz summary{
+  cursor:pointer;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.78rem;
+  font-weight:600;
+  color:var(--accent-deep);
+  list-style:none;
+}
+.quiz summary::-webkit-details-marker{display:none;}
+.quiz summary::before{content:"▸ "; }
+.quiz details[open] summary::before{content:"▾ ";}
+.quiz details p{
+  margin:.6em 0 0;
+  font-size:.85rem;
+  line-height:1.65;
+  color:var(--ink-soft);
+}
+.quiz summary:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+
+/* next lesson */
+.next{
+  margin-top:3.4em;
+  border-top:2px solid var(--accent);
+  padding-top:20px;
+  text-align:center;
+}
+.next span{
+  display:block;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.66rem; font-weight:700;
+  letter-spacing:.16em; text-transform:uppercase;
+  color:var(--ink-faint);
+  margin-bottom:.5em;
+}
+.next strong{
+  font-family:"Noto Serif Display","Noto Serif",serif;
+  font-size:1.12rem;
+  font-weight:700;
+  color:var(--accent-deep);
+}
+
+/* ── wide layout ──────────────────────────────────────── */
+@media (min-width:700px){
+  .tiers li{width:100%;}
+  .tiers li:nth-child(1){width:56%;}
+  .tiers li:nth-child(2){width:72%;}
+  .tiers li:nth-child(3){width:86%;}
+}
+
+@media (min-width:980px){
+  body{padding-inline:22px;}
+  .page{
+    grid-template-columns:clamp(118px,14vw,158px) minmax(0,1fr);
+    gap:clamp(24px,3.4vw,36px);
+    max-width:1000px;
+    padding-top:52px;
+  }
+  .rail{
+    display:block;
+    position:sticky;
+    top:calc(env(safe-area-inset-top, 0px) + 28px);
+    align-self:start;
+  }
+  .content{--note-w:clamp(148px,22%,200px);}
+  .prose{max-width:calc(100% - var(--note-w) - 30px);}
+  .sidenote{
+    float:right;
+    clear:right;
+    width:var(--note-w);
+    margin-right:calc(-1 * (var(--note-w) + 30px));
+    margin-top:.35em;
+    margin-bottom:1.6em;
+    background:transparent;
+    border-left:2px solid var(--border);
+    border-radius:0;
+    padding:2px 0 2px 13px;
+  }
+}
+</style>
+
+<div class="progress-wrap"><div class="progress-bar" id="progress"></div></div>
+
+<div class="page">
+
+  <nav class="rail" aria-label="Mục lục bài học">
+    <div class="toc-title">Mục lục</div>
+    <ul class="toc-list">
+      <li><a href="#dong-thoi-gian">Dòng thời gian</a></li>
+      <li><a href="#boi-canh">Bối cảnh</a></li>
+      <li><a href="#dien-bien">Diễn biến chính</a></li>
+      <li><a href="#bo-may">Bộ máy nhà nước</a></li>
+      <li><a href="#y-nghia">Ý nghĩa &amp; hệ quả</a></li>
+      <li><a href="#ghi-nho">Ghi nhớ nhanh</a></li>
+      <li><a href="#on-tap">Câu hỏi ôn tập</a></li>
+    </ul>
+  </nav>
+
+  <div class="content">
+
+    <header class="hero">
+      <div class="eyebrow">Lộ trình lịch sử Việt Nam · Bài 1</div>
+      <h1>Nhà nước Văn Lang — Thời các Vua Hùng</h1>
+      <div class="period">Khoảng thế kỷ VII TCN – 258 TCN</div>
+      <p class="legend">
+        <span><span class="nv" style="cursor:default">Tên người</span></span>
+        <span><span class="tg">Mốc thời gian</span></span>
+        <span class="legend-hint">rê chuột vào tên người để xem chú thích</span>
+      </p>
+    </header>
+
+    <section class="band" id="dong-thoi-gian">
+      <h2 class="band-title">Dòng thời gian</h2>
+      <ol class="timeline">
+        <li>
+          <span class="tl-when">cách nay ~4.000–3.500 năm</span>
+          <span class="tl-what">Văn hóa Phùng Nguyên</span>
+          <span class="tl-note">Cư dân bước vào sơ kỳ đồng thau</span>
+        </li>
+        <li>
+          <span class="tl-when">cách nay ~3.500–2.500 năm</span>
+          <span class="tl-what">Đồng Đậu · Gò Mun</span>
+          <span class="tl-note">Kỹ thuật luyện đồng tiến bộ dần</span>
+        </li>
+        <li>
+          <span class="tl-when">cách nay ~2.700–2.000 năm</span>
+          <span class="tl-what">Văn hóa Đông Sơn</span>
+          <span class="tl-note">Đỉnh cao đồ đồng, tiêu biểu là trống đồng</span>
+        </li>
+        <li>
+          <span class="tl-when">khoảng thế kỷ VII TCN</span>
+          <span class="tl-what">Nước Văn Lang</span>
+          <span class="tl-note">Hùng Vương, kinh đô Phong Châu</span>
+        </li>
+        <li>
+          <span class="tl-when">khoảng 258 TCN</span>
+          <span class="tl-what">Nước Âu Lạc</span>
+          <span class="tl-note">Thục Phán thay thế Hùng Vương</span>
+        </li>
+      </ol>
+      <p class="band-foot">Niên đại các văn hóa khảo cổ là con số ước tính, có thể chênh lệch giữa các tài liệu.</p>
+    </section>
+
+    <div class="prose">
+
+      <h2 id="boi-canh"><span class="h2-num">Phần một</span>Bối cảnh</h2>
+
+      <aside class="sidenote">
+        <b>Lưu ý về nguồn sử liệu</b>
+        Phần lớn thông tin về giai đoạn này đến từ truyền thuyết dân gian, được chép lại muộn hơn rất nhiều trong <i>Đại Việt sử ký toàn thư</i> (thế kỷ XV) và <i>Lĩnh Nam chích quái</i>. Nhiều chi tiết cụ thể mang tính biểu trưng, chưa được khảo cổ học hay sử liệu đương thời xác nhận chắc chắn.
+      </aside>
+
+      <p class="lede">Trước khi có nhà nước, vùng đất thuộc miền Bắc Việt Nam ngày nay đã trải qua một quá trình phát triển rất dài của cư dân bản địa.</p>
+
+      <p>Quá trình ấy gắn liền với các nền văn hóa khảo cổ nối tiếp nhau: Phùng Nguyên, Đồng Đậu, Gò Mun, rồi đến Đông Sơn. Đây là giai đoạn con người chuyển từ đồ đá sang sử dụng đồng thau, biết trồng lúa nước ở vùng đồng bằng sông Hồng, sông Mã, sông Cả, sống thành các công xã thị tộc rồi tiến dần lên những liên minh bộ lạc lớn hơn.</p>
+
+      <p>Sự phát triển của nông nghiệp lúa nước — vốn đòi hỏi phải trị thủy, đắp đê, đào mương — cùng với nhu cầu chống ngoại xâm đã thúc đẩy các bộ lạc liên kết lại với nhau. Đây được xem là động lực chính dẫn tới sự ra đời của một tổ chức nhà nước sơ khai đầu tiên, mà sử sách gọi là nước Văn Lang.</p>
+
+      <h2 id="dien-bien"><span class="h2-num">Phần hai</span>Diễn biến chính</h2>
+
+      <p>Theo truyền thuyết được ghi trong sử cũ, <span class="nv" data-note="Nhân vật truyền thuyết, được sử cũ chép là vị vua khởi thủy của họ Hồng Bàng, cha của Lạc Long Quân.">Kinh Dương Vương</span> và <span class="nv" data-note="Nhân vật truyền thuyết, con của Kinh Dương Vương. Theo truyền thuyết, ông lấy Âu Cơ và sinh ra bọc trăm trứng.">Lạc Long Quân</span> được coi là những vị vua khởi thủy, mở đầu dòng dõi “con Rồng cháu Tiên”. Truyền thuyết kể rằng Lạc Long Quân lấy <span class="nv" data-note="Nhân vật truyền thuyết, vợ Lạc Long Quân, mẹ của trăm người con — hình tượng giải thích nguồn gốc chung của dân tộc.">Âu Cơ</span>, sinh ra bọc trăm trứng, nở thành trăm người con. Đây là câu chuyện mang tính biểu tượng để giải thích nguồn gốc dân tộc, không phải một sự kiện lịch sử theo nghĩa thông thường.</p>
+
+      <aside class="sidenote">
+        <b>Vì sao là “18 đời”</b>
+        Nếu tính theo niên đại truyền thống, mỗi đời vua sẽ phải trị vì trung bình rất dài — điều giới sử học hiện đại đánh giá là không hợp lý. Nhiều khả năng đó là 18 chi hoặc 18 thế hệ cầm quyền, chứ không phải 18 cá nhân.
+      </aside>
+
+      <p>Nhân vật được xem là người lập ra nhà nước Văn Lang là <span class="nv" data-note="Danh hiệu chung của những người đứng đầu nước Văn Lang. Sử cũ chép có 18 đời Hùng Vương nối nhau trị vì.">Hùng Vương</span> thứ nhất. Theo <i>Đại Việt sử ký toàn thư</i>, có <span class="tg">18 đời Hùng Vương</span> nối tiếp nhau trị vì, kéo dài từ khoảng <span class="tg">thế kỷ VII TCN</span> đến năm <span class="tg">258 TCN</span>. Con số “18 đời” nên được hiểu mang tính ước lệ.</p>
+
+      <p>Về mặt tổ chức, theo mô tả trong sử cũ, kinh đô nước Văn Lang đặt tại <b>Phong Châu</b> — vùng Việt Trì, Phú Thọ ngày nay. Cả nước được chia thành 15 bộ, bên dưới là các làng bản. Đây là mô hình nhà nước còn rất sơ khai: quyền lực mang tính chất liên minh bộ lạc nhiều hơn là một bộ máy hành chính tập trung chặt chẽ như các nhà nước về sau.</p>
+    </div>
+
+    <figure class="band" id="bo-may" style="margin-inline:0;">
+      <figcaption class="band-title">Bộ máy nhà nước Văn Lang</figcaption>
+      <ol class="tiers">
+        <li>
+          <span class="tier-role">Hùng Vương</span>
+          <span class="tier-desc">Đứng đầu cả nước, theo sử cũ là cha truyền con nối</span>
+        </li>
+        <li>
+          <span class="tier-role">Lạc hầu · Lạc tướng</span>
+          <span class="tier-desc">Giúp việc cho vua ở trung ương</span>
+        </li>
+        <li>
+          <span class="tier-role">15 bộ</span>
+          <span class="tier-desc">Mỗi bộ do một Lạc tướng đứng đầu</span>
+        </li>
+        <li>
+          <span class="tier-role">Chiềng, chạ (làng bản)</span>
+          <span class="tier-desc">Đứng đầu là Bồ chính</span>
+        </li>
+      </ol>
+    </figure>
+
+    <div class="prose">
+      <aside class="sidenote">
+        <b>Trống đồng Đông Sơn</b>
+        Hiện vật tiêu biểu nhất của thời kỳ này, nổi tiếng nhất là trống đồng Ngọc Lũ. Hoa văn trên mặt trống cho thấy cảnh giã gạo, đua thuyền, nhảy múa — một nguồn tư liệu quý về đời sống cư dân bấy giờ.
+      </aside>
+
+      <p>Về đời sống kinh tế – xã hội, cư dân Văn Lang chủ yếu làm nông nghiệp trồng lúa nước, kết hợp chăn nuôi, đánh cá và làm nghề thủ công như đúc đồng, làm gốm, dệt vải. Văn hóa Đông Sơn được giới khảo cổ học xem là nền tảng vật chất gắn liền với thời kỳ Văn Lang, phản ánh trình độ luyện kim và tổ chức xã hội khá cao của cư dân thời bấy giờ.</p>
+
+      <p>Về mặt tín ngưỡng, cư dân Văn Lang thờ các lực lượng tự nhiên như thần núi, thần sông, thần mặt trời. Họ có tục xăm mình, nhuộm răng đen, ăn trầu — những nét văn hóa được xem là đặc trưng bản địa, khác biệt rõ với văn hóa Hán về sau.</p>
+
+      <p>Đến khoảng năm <span class="tg">258 TCN</span> — một số tài liệu ghi các mốc gần đó, con số cụ thể vẫn còn được thảo luận — nước Văn Lang chấm dứt. <span class="nv" data-note="Thủ lĩnh liên minh bộ lạc Âu Việt ở phía Bắc. Sau khi thay thế Hùng Vương, ông hợp nhất Âu Việt với Lạc Việt.">Thục Phán</span>, thủ lĩnh liên minh bộ lạc Âu Việt ở phía Bắc, đánh bại Hùng Vương thứ 18, hợp nhất Lạc Việt và Âu Việt, lập ra nước Âu Lạc và tự xưng là <span class="nv" data-note="Hiệu của Thục Phán khi lập nước Âu Lạc, đóng đô ở Cổ Loa — nội dung của bài học tiếp theo.">An Dương Vương</span>.</p>
+
+      <h2 id="y-nghia"><span class="h2-num">Phần ba</span>Ý nghĩa và hệ quả</h2>
+
+      <p>Văn Lang có ý nghĩa đặc biệt quan trọng vì đây được coi là nhà nước đầu tiên trong lịch sử Việt Nam, đặt nền móng cho ý thức cộng đồng và cho một xã hội có tổ chức của người Việt cổ. Mô hình tổ chức bộ – làng, quan hệ vua – Lạc hầu – Lạc tướng, cùng với nền văn hóa Đông Sơn, đã để lại dấu ấn sâu đậm trong bản sắc dân tộc về sau, kể cả khi đất nước trải qua hơn nghìn năm Bắc thuộc.</p>
+
+      <p>Việc hợp nhất Lạc Việt và Âu Việt thành Âu Lạc cũng cho thấy một xu hướng sẽ còn lặp lại nhiều lần: các cộng đồng cư dân Việt cổ liên kết với nhau để tăng cường sức mạnh phòng thủ, chuẩn bị đối phó với các thế lực từ phương Bắc — chủ đề xuyên suốt những giai đoạn lịch sử tiếp theo.</p>
+    </div>
+
+    <section class="band" id="ghi-nho">
+      <h2 class="band-title">Ghi nhớ nhanh</h2>
+      <ul class="memo">
+        <li>Văn Lang là nhà nước sơ khai đầu tiên của người Việt cổ, gắn liền với văn hóa Đông Sơn.</li>
+        <li>Truyền thuyết chép <span class="tg">18 đời Hùng Vương</span> — con số ước lệ, không nên hiểu là 18 người cụ thể.</li>
+        <li>Kinh đô đặt tại Phong Châu; bộ máy gồm Hùng Vương – Lạc hầu, Lạc tướng – Bồ chính.</li>
+        <li>Kinh tế chính là nông nghiệp lúa nước; thủ công đúc đồng phát triển, tiêu biểu là trống đồng.</li>
+        <li>Văn Lang kết thúc khoảng <span class="tg">258 TCN</span> khi <span class="nv" style="cursor:default">Thục Phán</span> lập ra nước Âu Lạc.</li>
+      </ul>
+    </section>
+
+    <section class="band" id="on-tap">
+      <h2 class="band-title">Câu hỏi ôn tập</h2>
+      <ol class="quiz">
+        <li>
+          <div class="q-num">Câu 1</div>
+          <p class="q-text">Nền văn hóa khảo cổ nào được xem là nền tảng vật chất của thời kỳ Văn Lang?</p>
+          <details><summary>Xem đáp án</summary><p>Văn hóa Đông Sơn.</p></details>
+        </li>
+        <li>
+          <div class="q-num">Câu 2</div>
+          <p class="q-text">Bộ máy nhà nước Văn Lang được tổ chức như thế nào, từ trung ương xuống địa phương?</p>
+          <details><summary>Xem đáp án</summary><p>Đứng đầu là Hùng Vương, giúp việc có Lạc hầu và Lạc tướng; cả nước chia thành 15 bộ do Lạc tướng đứng đầu; ở làng bản có Bồ chính.</p></details>
+        </li>
+        <li>
+          <div class="q-num">Câu 3</div>
+          <p class="q-text">Vì sao con số “18 đời Hùng Vương” được giới sử học hiện đại xem là mang tính ước lệ?</p>
+          <details><summary>Xem đáp án</summary><p>Vì nếu tính theo niên đại truyền thống thì mỗi đời vua phải trị vì trung bình quá dài, không hợp lý về mặt lịch sử. Nhiều khả năng đó là 18 chi hoặc 18 thế hệ, chứ không phải 18 cá nhân.</p></details>
+        </li>
+      </ol>
+    </section>
+
+    <div class="next">
+      <span>Bài tiếp theo</span>
+      <strong>Nước Âu Lạc và An Dương Vương</strong><br>
+      <span style="letter-spacing:.04em;text-transform:none;font-size:.8rem;margin-top:.4em;">khoảng 258 TCN – 179 TCN</span>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  /* reading progress */
+  var bar = document.getElementById('progress');
+  function tick(){
+    var h = document.documentElement;
+    var top = h.scrollTop || document.body.scrollTop || window.scrollY || 0;
+    var max = (h.scrollHeight || document.body.scrollHeight) - (h.clientHeight || window.innerHeight);
+    bar.style.width = (max > 0 ? Math.min(100, (top / max) * 100) : 0) + '%';
+  }
+  window.addEventListener('scroll', tick, {passive:true});
+  window.addEventListener('resize', tick);
+  tick();
+
+  /* scroll spy */
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc-list a'));
+  var targets = links.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  if (links.length) links[0].classList.add('is-active');
+  if ('IntersectionObserver' in window && targets.length){
+    var seen = {};
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ seen[e.target.id] = e.isIntersecting ? e.boundingClientRect.top : null; });
+      var activeId = null;
+      for (var i = 0; i < targets.length; i++){
+        var r = targets[i].getBoundingClientRect();
+        if (r.top <= window.innerHeight * 0.35) activeId = targets[i].id;
+      }
+      if (!activeId) activeId = targets[0].id;
+      links.forEach(function(a){
+        a.classList.toggle('is-active', a.getAttribute('href') === '#' + activeId);
+      });
+    }, {rootMargin:'-20% 0px -60% 0px', threshold:[0,1]});
+    targets.forEach(function(t){ io.observe(t); });
+  }
+
+  /* name tooltips */
+  var tip = document.createElement('div');
+  tip.className = 'tip';
+  tip.hidden = true;
+  document.body.appendChild(tip);
+
+  function place(el){
+    tip.textContent = el.getAttribute('data-note');
+    tip.hidden = false;
+    var w = Math.min(280, window.innerWidth - 24);
+    tip.style.width = w + 'px';
+    var r = el.getBoundingClientRect();
+    var left = r.left + r.width / 2 - w / 2;
+    left = Math.max(12, Math.min(left, window.innerWidth - w - 12));
+    tip.style.left = left + 'px';
+    var th = tip.offsetHeight;
+    var top = r.top - th - 10;
+    if (top < 8) top = r.bottom + 10;
+    tip.style.top = top + 'px';
+  }
+  function hide(){ tip.hidden = true; }
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-note]'), function(el){
+    el.setAttribute('tabindex','0');
+    el.addEventListener('mouseenter', function(){ place(el); });
+    el.addEventListener('mouseleave', hide);
+    el.addEventListener('focus', function(){ place(el); });
+    el.addEventListener('blur', hide);
+  });
+  window.addEventListener('scroll', hide, {passive:true});
+})();
+</script>
+
+</body></html>
