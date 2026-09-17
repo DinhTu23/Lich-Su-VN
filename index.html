@@ -1,0 +1,106 @@
+<!doctype html><html><head><meta charset="utf8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Lộ trình Lịch sử Việt Nam</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#f4ecda;
+  --surface:#fffdf7;
+  --surface-2:#eadfc4;
+  --ink:#2a2015;
+  --ink-soft:#6a5842;
+  --ink-faint:#8b7a61;
+  --border:#d7c4a0;
+  --border-soft:#e4d6b8;
+  --accent:#9c5322;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"Noto Sans",system-ui,sans-serif;
+  line-height:1.5;
+  padding:48px 20px 80px;
+}
+.wrap{max-width:760px;margin:0 auto}
+.kicker{
+  font-size:13px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:600;
+  margin-bottom:10px;
+}
+h1{
+  font-family:"Noto Serif",serif;
+  font-weight:700;
+  font-size:clamp(28px,5vw,42px);
+  margin:0 0 8px;
+}
+.sub{color:var(--ink-soft);margin:0 0 36px;font-size:15px}
+.list{
+  background:var(--surface);
+  border:1px solid var(--border-soft);
+  border-radius:14px;
+  overflow:hidden;
+}
+.item{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding:18px 22px;
+  text-decoration:none;
+  color:var(--ink);
+  border-bottom:1px solid var(--border-soft);
+  transition:background .15s ease;
+}
+.item:last-child{border-bottom:none}
+.item:hover{background:var(--surface-2)}
+.num{
+  font-family:"Noto Serif",serif;
+  font-weight:700;
+  font-size:15px;
+  color:var(--accent);
+  min-width:52px;
+}
+.meta{flex:1}
+.title{font-family:"Noto Serif",serif;font-weight:600;font-size:17px}
+.period{font-size:13px;color:var(--ink-faint);margin-top:2px}
+.arrow{color:var(--ink-faint);font-size:18px}
+.empty{
+  padding:40px 22px;
+  text-align:center;
+  color:var(--ink-faint);
+  font-size:14px;
+}
+footer{
+  text-align:center;
+  color:var(--ink-faint);
+  font-size:12px;
+  margin-top:32px;
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kicker">Tự học lịch sử Việt Nam</div>
+  <h1>Lộ trình các bài học</h1>
+  <p class="sub">Danh sách bài học đã lưu — bấm vào để mở lại từng bài.</p>
+
+  <div class="list" id="list">
+    <a class="item" href="bai-04-khoi-nghia-hai-ba-trung.html">
+      <div class="num">Bài 4</div>
+      <div class="meta">
+        <div class="title">Khởi nghĩa Hai Bà Trưng</div>
+        <div class="period">Khoảng năm 40 – 43</div>
+      </div>
+      <div class="arrow">→</div>
+    </a>
+  </div>
+
+  <footer>Cập nhật thủ công mỗi khi có bài mới · lưu trữ qua GitHub Pages</footer>
+</div>
+</body>
+</html>
