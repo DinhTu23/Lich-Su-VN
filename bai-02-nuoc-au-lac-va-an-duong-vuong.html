@@ -1,0 +1,706 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Nước Âu Lạc và An Dương Vương</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Serif+Display:ital,wght@0,500;0,700;1,500&family=Noto+Sans:wght@400;500;600;700&display=swap">
+
+<style>
+/* ── tokens ───────────────────────────────────────────── */
+:root{
+  --bg:#f4ecda;
+  --surface:#fffdf7;
+  --surface-2:#eadfc4;
+  --ink:#2a2015;
+  --ink-soft:#6a5842;
+  --ink-faint:#8b7a61;
+  --border:#d7c4a0;
+  --border-soft:#e4d6b8;
+  --accent:#9c5322;
+  --accent-deep:#6d3813;
+  --name-ink:#2c6136;
+  --name-line:#7fb98c;
+  --marker:#ffdf5e;
+  --marker-ink:#3d2f0a;
+  --shadow:0 1px 2px rgba(74,53,25,.06), 0 8px 24px rgba(74,53,25,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#16120c;
+    --surface:#1f1910;
+    --surface-2:#2a2217;
+    --ink:#ece1cb;
+    --ink-soft:#b7a686;
+    --ink-faint:#8d7d63;
+    --border:#453a25;
+    --border-soft:#372e1e;
+    --accent:#dd9d59;
+    --accent-deep:#f0bd85;
+    --name-ink:#8fd39c;
+    --name-line:#3f6b45;
+    --marker:rgba(226,177,49,.34);
+    --marker-ink:#f6e3ab;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px rgba(0,0,0,.34);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#16120c;
+  --surface:#1f1910;
+  --surface-2:#2a2217;
+  --ink:#ece1cb;
+  --ink-soft:#b7a686;
+  --ink-faint:#8d7d63;
+  --border:#453a25;
+  --border-soft:#372e1e;
+  --accent:#dd9d59;
+  --accent-deep:#f0bd85;
+  --name-ink:#8fd39c;
+  --name-line:#3f6b45;
+  --marker:rgba(226,177,49,.34);
+  --marker-ink:#f6e3ab;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px rgba(0,0,0,.34);
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"Noto Serif",Georgia,"Times New Roman",serif;
+  font-size:17px;
+  line-height:1.8;
+  padding-inline:18px;
+  padding-block:0 56px;
+}
+
+/* ── progress ─────────────────────────────────────────── */
+.progress-wrap{
+  position:fixed; top:0; left:0; right:0; z-index:40;
+  padding-top:env(safe-area-inset-top, 0px);
+  pointer-events:none;
+}
+.progress-bar{height:3px; width:0%; background:var(--accent);}
+
+/* ── page grid ────────────────────────────────────────── */
+.page{
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  gap:0;
+  justify-content:center;
+  margin:0 auto;
+  padding-top:38px;
+}
+.rail{display:none;}
+.content{min-width:0;}
+
+/* ── hero ─────────────────────────────────────────────── */
+.hero{
+  border-bottom:1px solid var(--border);
+  padding-bottom:26px;
+  margin-bottom:34px;
+}
+.eyebrow{
+  font-family:"Noto Sans",system-ui,sans-serif;
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  font-size:.68rem;
+  font-weight:700;
+  color:var(--accent);
+}
+h1{
+  font-family:"Noto Serif Display","Noto Serif",Georgia,serif;
+  font-weight:700;
+  font-size:clamp(1.75rem,5vw,2.6rem);
+  line-height:1.2;
+  margin:.28em 0 .4em;
+  text-wrap:balance;
+  letter-spacing:-.01em;
+}
+.period{
+  display:inline-block;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.82rem;
+  font-weight:600;
+  color:var(--accent-deep);
+  border:1px solid var(--accent);
+  border-radius:999px;
+  padding:.2em .9em;
+}
+.legend{
+  display:flex; flex-wrap:wrap; align-items:center; gap:8px 18px;
+  margin:20px 0 0;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.76rem;
+  color:var(--ink-faint);
+}
+.legend-hint{font-style:italic;}
+
+/* ── highlights ───────────────────────────────────────── */
+.nv{
+  font-weight:600;
+  color:var(--name-ink);
+  border-bottom:2px solid var(--name-line);
+  cursor:help;
+  border-radius:1px;
+}
+.nv:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+.tg{
+  font-weight:600;
+  color:var(--marker-ink);
+  background-image:linear-gradient(transparent 12%, var(--marker) 12%, var(--marker) 92%, transparent 92%);
+  padding:0 .18em;
+  border-radius:2px;
+}
+.tip{
+  position:fixed; z-index:60;
+  background:var(--surface);
+  color:var(--ink);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:10px 13px;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.8rem;
+  line-height:1.55;
+  box-shadow:var(--shadow);
+}
+
+/* ── table of contents rail ───────────────────────────── */
+.toc-title{
+  font-family:"Noto Sans",system-ui,sans-serif;
+  text-transform:uppercase; letter-spacing:.14em;
+  font-size:.64rem; font-weight:700;
+  color:var(--ink-faint);
+  margin-bottom:12px;
+}
+.toc-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:2px;}
+.toc-list a{
+  display:block;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.79rem;
+  line-height:1.4;
+  color:var(--ink-soft);
+  text-decoration:none;
+  padding:6px 0 6px 12px;
+  border-left:2px solid var(--border-soft);
+}
+.toc-list a:hover{color:var(--accent-deep);}
+.toc-list a.is-active{
+  color:var(--accent-deep);
+  font-weight:600;
+  border-left-color:var(--accent);
+}
+
+/* ── prose ────────────────────────────────────────────── */
+.prose{max-width:100%;}
+.prose p{margin:0 0 1.15em;}
+h2{
+  font-family:"Noto Serif Display","Noto Serif",Georgia,serif;
+  font-size:1.42rem;
+  font-weight:700;
+  color:var(--ink);
+  margin:2.6em 0 .85em;
+  text-wrap:balance;
+}
+h2 .h2-num{
+  display:block;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.64rem; font-weight:700;
+  letter-spacing:.16em; text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:.35em;
+}
+.lede{
+  font-family:"Noto Serif Display","Noto Serif",serif;
+  font-size:1.1rem;
+  font-style:italic;
+  color:var(--ink-soft);
+  line-height:1.7;
+}
+
+/* ── sidenote ─────────────────────────────────────────── */
+.sidenote{
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.82rem;
+  line-height:1.65;
+  color:var(--ink-soft);
+  border-left:3px solid var(--accent);
+  background:var(--surface-2);
+  border-radius:0 8px 8px 0;
+  padding:12px 15px;
+  margin:0 0 1.4em;
+}
+.sidenote b{
+  display:block;
+  color:var(--accent-deep);
+  font-weight:700;
+  font-size:.7rem;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  margin-bottom:.4em;
+}
+.sidenote i{font-style:italic;}
+
+/* ── bands (full content width) ───────────────────────── */
+.band{margin:2.8em 0;}
+.band-title{
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.68rem; font-weight:700;
+  letter-spacing:.16em; text-transform:uppercase;
+  color:var(--accent);
+  margin:0 0 16px;
+}
+.band-foot{
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.72rem;
+  color:var(--ink-faint);
+  margin:12px 0 0;
+  font-style:italic;
+}
+
+/* timeline */
+.timeline{
+  list-style:none; margin:0; padding:0;
+  display:flex;
+  overflow-x:auto;
+  scrollbar-width:thin;
+  padding-bottom:6px;
+}
+.timeline li{
+  flex:1 0 152px;
+  min-width:152px;
+  position:relative;
+  border-top:2px solid var(--border);
+  padding:18px 14px 0 0;
+}
+.timeline li::before{
+  content:"";
+  position:absolute; top:-6px; left:0;
+  width:10px; height:10px; border-radius:50%;
+  background:var(--bg);
+  border:2px solid var(--accent);
+}
+.timeline li:last-child::before{background:var(--accent);}
+.tl-when{
+  display:block;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.7rem; font-weight:700;
+  letter-spacing:.04em;
+  color:var(--accent-deep);
+  font-variant-numeric:tabular-nums;
+}
+.tl-what{
+  display:block;
+  font-family:"Noto Serif Display","Noto Serif",serif;
+  font-size:.98rem; font-weight:700;
+  line-height:1.35;
+  margin:.25em 0 .2em;
+}
+.tl-note{
+  display:block;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.74rem;
+  line-height:1.5;
+  color:var(--ink-soft);
+}
+
+/* hierarchy diagram */
+.tiers{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; align-items:center; gap:0;}
+.tiers li{
+  width:100%;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:13px 18px;
+  text-align:center;
+}
+.tiers li + li{margin-top:22px; position:relative;}
+.tiers li + li::before{
+  content:"";
+  position:absolute; top:-18px; left:50%;
+  width:2px; height:14px;
+  background:var(--border);
+  transform:translateX(-50%);
+}
+.tier-role{
+  display:block;
+  font-family:"Noto Serif Display","Noto Serif",serif;
+  font-weight:700;
+  font-size:1.02rem;
+  color:var(--accent-deep);
+}
+.tier-desc{
+  display:block;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.78rem;
+  color:var(--ink-soft);
+  line-height:1.5;
+  margin-top:.15em;
+}
+
+/* memo cards */
+.memo{
+  list-style:none; margin:0; padding:0;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(215px,1fr));
+  gap:12px;
+}
+.memo li{
+  background:var(--surface);
+  border:1px solid var(--border-soft);
+  border-top:3px solid var(--accent);
+  border-radius:8px;
+  padding:14px 16px;
+  font-size:.88rem;
+  line-height:1.65;
+}
+
+/* quiz cards */
+.quiz{
+  list-style:none; margin:0; padding:0;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(235px,1fr));
+  gap:14px;
+  counter-reset:q;
+}
+.quiz li{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:16px 18px;
+  display:flex;
+  flex-direction:column;
+}
+.q-num{
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.64rem; font-weight:700;
+  letter-spacing:.14em;
+  color:var(--accent);
+  margin-bottom:.5em;
+}
+.q-text{
+  font-weight:600;
+  font-size:.94rem;
+  line-height:1.6;
+  margin:0 0 auto;
+}
+.quiz details{
+  margin-top:14px;
+  border-top:1px dashed var(--border);
+  padding-top:11px;
+}
+.quiz summary{
+  cursor:pointer;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.78rem;
+  font-weight:600;
+  color:var(--accent-deep);
+  list-style:none;
+}
+.quiz summary::-webkit-details-marker{display:none;}
+.quiz summary::before{content:"▸ "; }
+.quiz details[open] summary::before{content:"▾ ";}
+.quiz details p{
+  margin:.6em 0 0;
+  font-size:.85rem;
+  line-height:1.65;
+  color:var(--ink-soft);
+}
+.quiz summary:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+
+/* next lesson */
+.next{
+  margin-top:3.4em;
+  border-top:2px solid var(--accent);
+  padding-top:20px;
+  text-align:center;
+}
+.next span{
+  display:block;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.66rem; font-weight:700;
+  letter-spacing:.16em; text-transform:uppercase;
+  color:var(--ink-faint);
+  margin-bottom:.5em;
+}
+.next strong{
+  font-family:"Noto Serif Display","Noto Serif",serif;
+  font-size:1.12rem;
+  font-weight:700;
+  color:var(--accent-deep);
+}
+
+/* ── wide layout ──────────────────────────────────────── */
+@media (min-width:700px){
+  .tiers li{width:100%;}
+  .tiers li:nth-child(1){width:56%;}
+  .tiers li:nth-child(2){width:72%;}
+  .tiers li:nth-child(3){width:86%;}
+}
+
+@media (min-width:980px){
+  body{padding-inline:22px;}
+  .page{
+    grid-template-columns:clamp(118px,14vw,158px) minmax(0,1fr);
+    gap:clamp(24px,3.4vw,36px);
+    max-width:1000px;
+    padding-top:52px;
+  }
+  .rail{
+    display:block;
+    position:sticky;
+    top:calc(env(safe-area-inset-top, 0px) + 28px);
+    align-self:start;
+  }
+  .content{--note-w:clamp(148px,22%,200px);}
+  .prose{max-width:calc(100% - var(--note-w) - 30px);}
+  .sidenote{
+    float:right;
+    clear:right;
+    width:var(--note-w);
+    margin-right:calc(-1 * (var(--note-w) + 30px));
+    margin-top:.35em;
+    margin-bottom:1.6em;
+    background:transparent;
+    border-left:2px solid var(--border);
+    border-radius:0;
+    padding:2px 0 2px 13px;
+  }
+}
+</style>
+
+<div class="progress-wrap"><div class="progress-bar" id="progress"></div></div>
+
+<div class="page">
+
+  <nav class="rail" aria-label="Mục lục bài học">
+    <div class="toc-title">Mục lục</div>
+    <ul class="toc-list">
+      <li><a href="#dong-thoi-gian">Dòng thời gian</a></li>
+      <li><a href="#boi-canh">Bối cảnh</a></li>
+      <li><a href="#dien-bien">Diễn biến chính</a></li>
+      <li><a href="#bo-may">Thành Cổ Loa</a></li>
+      <li><a href="#y-nghia">Ý nghĩa &amp; hệ quả</a></li>
+      <li><a href="#ghi-nho">Ghi nhớ nhanh</a></li>
+      <li><a href="#on-tap">Câu hỏi ôn tập</a></li>
+    </ul>
+  </nav>
+
+  <div class="content">
+
+    <header class="hero">
+      <div class="eyebrow">Lộ trình lịch sử Việt Nam · Bài 2</div>
+      <h1>Nước Âu Lạc và An Dương Vương</h1>
+      <div class="period">Khoảng 258 TCN – 179 TCN</div>
+      <p class="legend">
+        <span><span class="nv" style="cursor:default">Tên người</span></span>
+        <span><span class="tg">Mốc thời gian</span></span>
+        <span class="legend-hint">rê chuột vào tên người để xem chú thích</span>
+      </p>
+    </header>
+
+    <section class="band" id="dong-thoi-gian">
+      <h2 class="band-title">Dòng thời gian</h2>
+      <ol class="timeline">
+        <li>
+          <span class="tl-when">khoảng 258 TCN</span>
+          <span class="tl-what">Nước Âu Lạc ra đời</span>
+          <span class="tl-note">Thục Phán thay Hùng Vương, xưng An Dương Vương</span>
+        </li>
+        <li>
+          <span class="tl-when">221 TCN</span>
+          <span class="tl-what">Nhà Tần thống nhất Trung Quốc</span>
+          <span class="tl-note">Rồi phát binh xuống vùng đất Bách Việt</span>
+        </li>
+        <li>
+          <span class="tl-when">chưa rõ năm cụ thể</span>
+          <span class="tl-what">Xây thành Cổ Loa</span>
+          <span class="tl-note">Đóng đô ở Cổ Loa, xây thành ba vòng xoáy ốc</span>
+        </li>
+        <li>
+          <span class="tl-when">206 TCN</span>
+          <span class="tl-what">Nhà Tần sụp đổ</span>
+          <span class="tl-note">Triệu Đà cát cứ, lập nước Nam Việt</span>
+        </li>
+        <li>
+          <span class="tl-when">khoảng 179 TCN</span>
+          <span class="tl-what">Âu Lạc sụp đổ</span>
+          <span class="tl-note">Bị sáp nhập vào Nam Việt, mở đầu Bắc thuộc</span>
+        </li>
+      </ol>
+      <p class="band-foot">Mốc năm Âu Lạc sụp đổ còn khác nhau giữa các nguồn; bài này theo mốc được nhiều nhà nghiên cứu hiện nay chấp nhận.</p>
+    </section>
+
+    <div class="prose">
+
+      <h2 id="boi-canh"><span class="h2-num">Phần một</span>Bối cảnh</h2>
+
+      <aside class="sidenote">
+        <b>Lưu ý về nguồn sử liệu</b>
+        Chuyện thần Kim Quy, nỏ thần, hay mối tình Mỵ Châu – Trọng Thủy đều là truyền thuyết được ghi lại khá muộn, mang tính biểu tượng và bài học đạo lý nhiều hơn tường thuật chính xác. Ngay cả mốc Âu Lạc sụp đổ cũng khác nhau: <i>Đại Việt sử ký toàn thư</i> ghi sớm hơn, trong khi nhiều nhà sử học hiện đại dựa theo <i>Sử ký</i> của Tư Mã Thiên cho rằng khoảng 179 TCN hợp lý hơn.
+      </aside>
+
+      <p class="lede">Bài trước đã nhắc đến việc nhà nước Văn Lang chấm dứt khi bị một thủ lĩnh từ phương Bắc đánh bại. Người đó chính là Thục Phán.</p>
+
+      <p><span class="nv" data-note="Thủ lĩnh liên minh bộ lạc Âu Việt ở phía Bắc Văn Lang, sau này lập ra nước Âu Lạc và xưng An Dương Vương.">Thục Phán</span> là thủ lĩnh của liên minh bộ lạc <b>Âu Việt</b>, cư trú ở vùng núi phía Bắc Văn Lang, khoảng khu vực Cao Bằng, Việt Bắc ngày nay. Trong khi đó, Lạc Việt là tên gọi chỉ cư dân vùng đồng bằng dưới quyền các Vua Hùng.</p>
+
+      <p>Bối cảnh khu vực lúc này cũng đang biến động dữ dội: ở phương Bắc, nhà <b>Tần</b> vừa thống nhất Trung Quốc (năm 221 TCN) và ngay sau đó phát binh tiến xuống phía nam, đánh vào vùng đất của các nhóm Bách Việt, trong đó có cả Âu Việt và Lạc Việt. Một số sử liệu Trung Quốc (như <i>Hoài Nam Tử</i>) có nhắc đến các cuộc kháng cự của người Việt trước quân Tần, tuy chi tiết cụ thể còn nhiều điểm chưa rõ ràng. Áp lực từ phương Bắc được xem là một trong những lý do khiến Âu Việt và Lạc Việt có xu hướng liên kết lại với nhau để tăng cường khả năng phòng thủ.</p>
+
+      <h2 id="dien-bien"><span class="h2-num">Phần hai</span>Diễn biến chính</h2>
+
+      <p>Sau khi đánh bại Hùng Vương thứ 18 (khoảng năm <span class="tg">258 TCN</span>), Thục Phán hợp nhất đất đai và cư dân của Âu Việt với Lạc Việt, lập ra nước <b>Âu Lạc</b> — tên nước được ghép từ tên hai nhóm cư dân này. Ông tự xưng là <span class="nv" data-note="Hiệu của Thục Phán khi lập nước Âu Lạc, đóng đô ở Cổ Loa.">An Dương Vương</span>.</p>
+
+      <p>Một quyết định quan trọng của An Dương Vương là dời trung tâm quyền lực từ vùng Phong Châu (trung du) xuống đồng bằng, đóng đô tại <b>Cổ Loa</b> — nay thuộc huyện Đông Anh, Hà Nội. Tại đây, ông cho xây dựng một tòa thành lớn, đắp theo nhiều vòng xoáy ốc, gọi là thành Cổ Loa (còn gọi là thành Ốc hay Loa thành).</p>
+
+      <aside class="sidenote">
+        <b>Bằng chứng khảo cổ</b>
+        Các cuộc khai quật tại Cổ Loa từ giữa thế kỷ XX đã tìm thấy nhiều mũi tên đồng và khuôn đúc mũi tên, cho thấy đây từng là một trung tâm quân sự — chính trị quan trọng, với trình độ chế tác vũ khí đáng kể.
+      </aside>
+
+      <p>Truyền thuyết dân gian kể rằng việc xây thành ban đầu gặp khó khăn vì đất cứ đắp lên lại bị sụt lở, cho đến khi có thần <span class="nv" data-note="Nhân vật truyền thuyết, được cho là đã giúp An Dương Vương xây thành và tặng chiếc móng làm lẫy nỏ thần.">Kim Quy</span> hiện lên giúp đỡ, rồi còn tặng An Dương Vương một chiếc móng để làm lẫy nỏ, tạo ra chiếc “nỏ thần” có sức mạnh bắn được nhiều mũi tên cùng lúc. Đây là truyền thuyết mang tính biểu tượng, không phải sự kiện lịch sử được xác nhận — dù trên thực tế khảo cổ có bằng chứng cho thấy cư dân Cổ Loa từng chế tạo số lượng lớn mũi tên đồng.</p>
+
+      <p>Về phía Bắc, sau khi nhà Tần sụp đổ (năm 206 TCN), một viên quan nhà Tần tên là <span class="nv" data-note="Viên quan nhà Tần, nhân lúc loạn lạc cát cứ vùng Nam Hải rồi lập nước Nam Việt, sau này thôn tính Âu Lạc.">Triệu Đà</span> nhân lúc loạn lạc đã cát cứ vùng Nam Hải (Quảng Đông ngày nay), rồi lập ra nước <b>Nam Việt</b>, đóng đô ở Phiên Ngung (Quảng Châu ngày nay). Triệu Đà nhiều lần đem quân đánh Âu Lạc nhưng đều thất bại, do thành Cổ Loa kiên cố và quân Âu Lạc có vũ khí mạnh.</p>
+
+      <p>Theo truyền thuyết, không thắng được bằng vũ lực, Triệu Đà chuyển sang dùng mưu kế: cầu hòa và xin cưới con gái An Dương Vương là <span class="nv" data-note="Con gái An Dương Vương. Theo truyền thuyết, bà vô tình để lộ bí mật nỏ thần cho Trọng Thủy.">Mỵ Châu</span> cho con trai mình là <span class="nv" data-note="Con trai Triệu Đà, theo truyền thuyết ở rể tại Cổ Loa để dò xét và đánh tráo bí mật nỏ thần.">Trọng Thủy</span>, rồi cho Trọng Thủy ở rể tại Cổ Loa để dò xét, đánh tráo bí mật của nỏ thần đem về báo cho cha. Khi Triệu Đà bất ngờ đem quân đánh úp, Âu Lạc không kịp trở tay và thất thủ. Câu chuyện Mỵ Châu rắc lông ngỗng dẫn đường, rồi bị An Dương Vương chém vì trót tin lầm, cũng thuộc phần truyền thuyết mang tính bài học cảnh giác, không nên hiểu theo nghĩa sự kiện có thật từng chi tiết. Dù vậy, việc Âu Lạc bị Nam Việt thôn tính là sự kiện được sử liệu Trung Quốc (Sử ký) xác nhận.</p>
+
+      <p>Nước Âu Lạc chấm dứt tồn tại vào khoảng năm <span class="tg">179 TCN</span>, bị sáp nhập vào Nam Việt của Triệu Đà. Từ đây, vùng đất của người Việt cổ bước vào một giai đoạn hoàn toàn mới: chịu sự cai trị của các chính quyền phương Bắc trong một thời gian dài, mở đầu cho điều mà sử sách gọi là thời kỳ Bắc thuộc.</p>
+    </div>
+
+    <figure class="band" id="bo-may" style="margin-inline:0;">
+      <figcaption class="band-title">Ba vòng thành Cổ Loa</figcaption>
+      <ol class="tiers">
+        <li>
+          <span class="tier-role">Vòng thành trong cùng (Thành nội)</span>
+          <span class="tier-desc">Nơi ở của An Dương Vương và triều đình</span>
+        </li>
+        <li>
+          <span class="tier-role">Vòng thành giữa (Thành trung)</span>
+          <span class="tier-desc">Khu vực quân sự, nơi đóng quân</span>
+        </li>
+        <li>
+          <span class="tier-role">Vòng thành ngoài cùng (Thành ngoại)</span>
+          <span class="tier-desc">Vòng bảo vệ lớn nhất, kết hợp hào nước bao quanh</span>
+        </li>
+      </ol>
+      <p class="band-foot">Cấu trúc ba vòng thành xoáy ốc là mô tả được nhiều nhà khảo cổ học chấp nhận dựa trên dấu tích còn lại đến nay.</p>
+    </figure>
+
+    <div class="prose">
+      <h2 id="y-nghia"><span class="h2-num">Phần ba</span>Ý nghĩa và hệ quả</h2>
+
+      <p>Việc Thục Phán hợp nhất Âu Việt và Lạc Việt thành Âu Lạc cho thấy bước phát triển cao hơn so với nhà nước Văn Lang trước đó, cả về quy mô lãnh thổ lẫn tổ chức quân sự — tiêu biểu là thành Cổ Loa, một công trình phòng thủ có giá trị kỹ thuật vượt trội so với đương thời và vẫn còn dấu tích đến ngày nay. Đây cũng là minh chứng cho khả năng tổ chức xã hội và huy động nhân lực đáng kể của người Việt cổ.</p>
+
+      <p>Tuy nhiên, sự sụp đổ của Âu Lạc trước Triệu Đà lại đánh dấu một bước ngoặt quan trọng và đầy đau xót: đây là lần đầu tiên nhà nước của người Việt cổ bị một thế lực từ phương Bắc thôn tính hoàn toàn, mở đầu cho hơn một nghìn năm Bắc thuộc — giai đoạn mà người Việt phải liên tục đấu tranh để giữ gìn bản sắc và giành lại quyền tự chủ. Câu chuyện Mỵ Châu – Trọng Thủy, dù mang màu sắc truyền thuyết, về sau trở thành một bài học kinh điển trong văn hóa Việt Nam về sự mất cảnh giác trước âm mưu của kẻ thù.</p>
+    </div>
+
+    <section class="band" id="ghi-nho">
+      <h2 class="band-title">Ghi nhớ nhanh</h2>
+      <ul class="memo">
+        <li><span class="nv" style="cursor:default">Thục Phán</span> hợp nhất Âu Việt và Lạc Việt, lập nước Âu Lạc, xưng <span class="nv" style="cursor:default">An Dương Vương</span> (khoảng <span class="tg">258 TCN</span>).</li>
+        <li>Đóng đô tại Cổ Loa, xây thành ba vòng xoáy ốc — công trình quân sự tiêu biểu, có dấu tích khảo cổ xác nhận.</li>
+        <li>Chuyện thần Kim Quy, nỏ thần, Mỵ Châu – Trọng Thủy là truyền thuyết mang tính biểu tượng, không phải sử liệu chắc chắn.</li>
+        <li><span class="nv" style="cursor:default">Triệu Đà</span> lập nước Nam Việt sau khi nhà Tần sụp đổ, nhiều lần đánh Âu Lạc, cuối cùng thôn tính được nước này.</li>
+        <li>Âu Lạc sụp đổ khoảng năm <span class="tg">179 TCN</span>, mở đầu thời kỳ Bắc thuộc kéo dài của lịch sử Việt Nam.</li>
+      </ul>
+    </section>
+
+    <section class="band" id="on-tap">
+      <h2 class="band-title">Câu hỏi ôn tập</h2>
+      <ol class="quiz">
+        <li>
+          <div class="q-num">Câu 1</div>
+          <p class="q-text">Nước Âu Lạc được hình thành từ việc hợp nhất hai nhóm cư dân nào?</p>
+          <details><summary>Xem đáp án</summary><p>Âu Việt (do Thục Phán đứng đầu) và Lạc Việt (cư dân vùng Văn Lang cũ).</p></details>
+        </li>
+        <li>
+          <div class="q-num">Câu 2</div>
+          <p class="q-text">Thành Cổ Loa có đặc điểm gì về kiến trúc và được khảo cổ học đánh giá thế nào?</p>
+          <details><summary>Xem đáp án</summary><p>Thành đắp theo ba vòng xoáy ốc kết hợp hào nước; khảo cổ đã tìm thấy nhiều mũi tên đồng và khuôn đúc mũi tên, cho thấy đây từng là trung tâm quân sự — chính trị quan trọng.</p></details>
+        </li>
+        <li>
+          <div class="q-num">Câu 3</div>
+          <p class="q-text">Vì sao câu chuyện thần Kim Quy, nỏ thần và Mỵ Châu – Trọng Thủy cần được nhìn nhận thận trọng khi học lịch sử?</p>
+          <details><summary>Xem đáp án</summary><p>Vì đây là truyền thuyết dân gian được ghi chép lại khá muộn, mang tính biểu tượng và bài học đạo lý, không phải sự kiện lịch sử được xác nhận chắc chắn theo từng chi tiết.</p></details>
+        </li>
+      </ol>
+    </section>
+
+    <div class="next">
+      <span>Bài tiếp theo</span>
+      <strong>Thời kỳ Bắc thuộc lần thứ nhất</strong><br>
+      <span style="letter-spacing:.04em;text-transform:none;font-size:.8rem;margin-top:.4em;">khoảng 179 TCN – 40 SCN</span>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  /* reading progress */
+  var bar = document.getElementById('progress');
+  function tick(){
+    var h = document.documentElement;
+    var top = h.scrollTop || document.body.scrollTop || window.scrollY || 0;
+    var max = (h.scrollHeight || document.body.scrollHeight) - (h.clientHeight || window.innerHeight);
+    bar.style.width = (max > 0 ? Math.min(100, (top / max) * 100) : 0) + '%';
+  }
+  window.addEventListener('scroll', tick, {passive:true});
+  window.addEventListener('resize', tick);
+  tick();
+
+  /* scroll spy */
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc-list a'));
+  var targets = links.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  if (links.length) links[0].classList.add('is-active');
+  if ('IntersectionObserver' in window && targets.length){
+    var seen = {};
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ seen[e.target.id] = e.isIntersecting ? e.boundingClientRect.top : null; });
+      var activeId = null;
+      for (var i = 0; i < targets.length; i++){
+        var r = targets[i].getBoundingClientRect();
+        if (r.top <= window.innerHeight * 0.35) activeId = targets[i].id;
+      }
+      if (!activeId) activeId = targets[0].id;
+      links.forEach(function(a){
+        a.classList.toggle('is-active', a.getAttribute('href') === '#' + activeId);
+      });
+    }, {rootMargin:'-20% 0px -60% 0px', threshold:[0,1]});
+    targets.forEach(function(t){ io.observe(t); });
+  }
+
+  /* name tooltips */
+  var tip = document.createElement('div');
+  tip.className = 'tip';
+  tip.hidden = true;
+  document.body.appendChild(tip);
+
+  function place(el){
+    tip.textContent = el.getAttribute('data-note');
+    tip.hidden = false;
+    var w = Math.min(280, window.innerWidth - 24);
+    tip.style.width = w + 'px';
+    var r = el.getBoundingClientRect();
+    var left = r.left + r.width / 2 - w / 2;
+    left = Math.max(12, Math.min(left, window.innerWidth - w - 12));
+    tip.style.left = left + 'px';
+    var th = tip.offsetHeight;
+    var top = r.top - th - 10;
+    if (top < 8) top = r.bottom + 10;
+    tip.style.top = top + 'px';
+  }
+  function hide(){ tip.hidden = true; }
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-note]'), function(el){
+    el.setAttribute('tabindex','0');
+    el.addEventListener('mouseenter', function(){ place(el); });
+    el.addEventListener('mouseleave', hide);
+    el.addEventListener('focus', function(){ place(el); });
+    el.addEventListener('blur', hide);
+  });
+  window.addEventListener('scroll', hide, {passive:true});
+})();
+</script>
+
+</body></html>
