@@ -69,6 +69,22 @@ h1{
 .title{font-family:"Noto Serif",serif;font-weight:600;font-size:17px}
 .period{font-size:13px;color:var(--ink-faint);margin-top:2px}
 .arrow{color:var(--ink-faint);font-size:18px}
+.pending{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding:18px 22px;
+  color:var(--ink-faint);
+  border-bottom:1px solid var(--border-soft);
+}
+.pending .title{font-weight:500;color:var(--ink-faint)}
+.tagline{
+  font-size:12px;
+  border:1px solid var(--border);
+  border-radius:999px;
+  padding:2px 10px;
+  white-space:nowrap;
+}
 .empty{
   padding:40px 22px;
   text-align:center;
@@ -90,6 +106,33 @@ footer{
   <p class="sub">Danh sách bài học đã lưu — bấm vào để mở lại từng bài.</p>
 
   <div class="list" id="list">
+    <a class="item" href="bai-01-nha-nuoc-van-lang.html">
+      <div class="num">Bài 1</div>
+      <div class="meta">
+        <div class="title">Nhà nước Văn Lang — Thời các Vua Hùng</div>
+        <div class="period">Khoảng thế kỷ VII TCN – 258 TCN</div>
+      </div>
+      <div class="arrow">→</div>
+    </a>
+
+    <div class="pending">
+      <div class="num">Bài 2</div>
+      <div class="meta">
+        <div class="title">Nước Âu Lạc và An Dương Vương</div>
+        <div class="period">Khoảng 258 TCN – 179 TCN</div>
+      </div>
+      <div class="tagline">chưa lưu</div>
+    </div>
+
+    <div class="pending">
+      <div class="num">Bài 3</div>
+      <div class="meta">
+        <div class="title">Thời kỳ Bắc thuộc lần thứ nhất</div>
+        <div class="period">Khoảng 179 TCN – năm 40</div>
+      </div>
+      <div class="tagline">chưa lưu</div>
+    </div>
+
     <a class="item" href="bai-04-khoi-nghia-hai-ba-trung.html">
       <div class="num">Bài 4</div>
       <div class="meta">
