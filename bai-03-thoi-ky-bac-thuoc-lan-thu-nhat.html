@@ -1,0 +1,715 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Ách đô hộ đầu tiên</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Serif+Display:ital,wght@0,500;0,700;1,500&family=Noto+Sans:wght@400;500;600;700&display=swap">
+
+<style>
+/* ── tokens ───────────────────────────────────────────── */
+:root{
+  --bg:#f4ecda;
+  --surface:#fffdf7;
+  --surface-2:#eadfc4;
+  --ink:#2a2015;
+  --ink-soft:#6a5842;
+  --ink-faint:#8b7a61;
+  --border:#d7c4a0;
+  --border-soft:#e4d6b8;
+  --accent:#9c5322;
+  --accent-deep:#6d3813;
+  --name-ink:#2c6136;
+  --name-line:#7fb98c;
+  --marker:#ffdf5e;
+  --marker-ink:#3d2f0a;
+  --shadow:0 1px 2px rgba(74,53,25,.06), 0 8px 24px rgba(74,53,25,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#16120c;
+    --surface:#1f1910;
+    --surface-2:#2a2217;
+    --ink:#ece1cb;
+    --ink-soft:#b7a686;
+    --ink-faint:#8d7d63;
+    --border:#453a25;
+    --border-soft:#372e1e;
+    --accent:#dd9d59;
+    --accent-deep:#f0bd85;
+    --name-ink:#8fd39c;
+    --name-line:#3f6b45;
+    --marker:rgba(226,177,49,.34);
+    --marker-ink:#f6e3ab;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px rgba(0,0,0,.34);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#16120c;
+  --surface:#1f1910;
+  --surface-2:#2a2217;
+  --ink:#ece1cb;
+  --ink-soft:#b7a686;
+  --ink-faint:#8d7d63;
+  --border:#453a25;
+  --border-soft:#372e1e;
+  --accent:#dd9d59;
+  --accent-deep:#f0bd85;
+  --name-ink:#8fd39c;
+  --name-line:#3f6b45;
+  --marker:rgba(226,177,49,.34);
+  --marker-ink:#f6e3ab;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px rgba(0,0,0,.34);
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"Noto Serif",Georgia,"Times New Roman",serif;
+  font-size:17px;
+  line-height:1.8;
+  padding-inline:18px;
+  padding-block:0 56px;
+}
+
+/* ── progress ─────────────────────────────────────────── */
+.progress-wrap{
+  position:fixed; top:0; left:0; right:0; z-index:40;
+  padding-top:env(safe-area-inset-top, 0px);
+  pointer-events:none;
+}
+.progress-bar{height:3px; width:0%; background:var(--accent);}
+
+/* ── page grid ────────────────────────────────────────── */
+.page{
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  gap:0;
+  justify-content:center;
+  margin:0 auto;
+  padding-top:38px;
+}
+.rail{display:none;}
+.content{min-width:0;}
+
+/* ── hero ─────────────────────────────────────────────── */
+.hero{
+  border-bottom:1px solid var(--border);
+  padding-bottom:26px;
+  margin-bottom:34px;
+}
+.eyebrow{
+  font-family:"Noto Sans",system-ui,sans-serif;
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  font-size:.68rem;
+  font-weight:700;
+  color:var(--accent);
+}
+h1{
+  font-family:"Noto Serif Display","Noto Serif",Georgia,serif;
+  font-weight:700;
+  font-size:clamp(1.75rem,5vw,2.6rem);
+  line-height:1.2;
+  margin:.28em 0 .4em;
+  text-wrap:balance;
+  letter-spacing:-.01em;
+}
+.period{
+  display:inline-block;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.82rem;
+  font-weight:600;
+  color:var(--accent-deep);
+  border:1px solid var(--accent);
+  border-radius:999px;
+  padding:.2em .9em;
+}
+.legend{
+  display:flex; flex-wrap:wrap; align-items:center; gap:8px 18px;
+  margin:20px 0 0;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.76rem;
+  color:var(--ink-faint);
+}
+.legend-hint{font-style:italic;}
+
+/* ── highlights ───────────────────────────────────────── */
+.nv{
+  font-weight:600;
+  color:var(--name-ink);
+  border-bottom:2px solid var(--name-line);
+  cursor:help;
+  border-radius:1px;
+}
+.nv:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+.tg{
+  font-weight:600;
+  color:var(--marker-ink);
+  background-image:linear-gradient(transparent 12%, var(--marker) 12%, var(--marker) 92%, transparent 92%);
+  padding:0 .18em;
+  border-radius:2px;
+}
+.tip{
+  position:fixed; z-index:60;
+  background:var(--surface);
+  color:var(--ink);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:10px 13px;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.8rem;
+  line-height:1.55;
+  box-shadow:var(--shadow);
+}
+
+/* ── table of contents rail ───────────────────────────── */
+.toc-title{
+  font-family:"Noto Sans",system-ui,sans-serif;
+  text-transform:uppercase; letter-spacing:.14em;
+  font-size:.64rem; font-weight:700;
+  color:var(--ink-faint);
+  margin-bottom:12px;
+}
+.toc-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:2px;}
+.toc-list a{
+  display:block;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.79rem;
+  line-height:1.4;
+  color:var(--ink-soft);
+  text-decoration:none;
+  padding:6px 0 6px 12px;
+  border-left:2px solid var(--border-soft);
+}
+.toc-list a:hover{color:var(--accent-deep);}
+.toc-list a.is-active{
+  color:var(--accent-deep);
+  font-weight:600;
+  border-left-color:var(--accent);
+}
+
+/* ── prose ────────────────────────────────────────────── */
+.prose{max-width:100%;}
+.prose p{margin:0 0 1.15em;}
+h2{
+  font-family:"Noto Serif Display","Noto Serif",Georgia,serif;
+  font-size:1.42rem;
+  font-weight:700;
+  color:var(--ink);
+  margin:2.6em 0 .85em;
+  text-wrap:balance;
+}
+h2 .h2-num{
+  display:block;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.64rem; font-weight:700;
+  letter-spacing:.16em; text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:.35em;
+}
+.lede{
+  font-family:"Noto Serif Display","Noto Serif",serif;
+  font-size:1.1rem;
+  font-style:italic;
+  color:var(--ink-soft);
+  line-height:1.7;
+}
+
+/* ── sidenote ─────────────────────────────────────────── */
+.sidenote{
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.82rem;
+  line-height:1.65;
+  color:var(--ink-soft);
+  border-left:3px solid var(--accent);
+  background:var(--surface-2);
+  border-radius:0 8px 8px 0;
+  padding:12px 15px;
+  margin:0 0 1.4em;
+}
+.sidenote b{
+  display:block;
+  color:var(--accent-deep);
+  font-weight:700;
+  font-size:.7rem;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  margin-bottom:.4em;
+}
+.sidenote i{font-style:italic;}
+
+/* ── bands (full content width) ───────────────────────── */
+.band{margin:2.8em 0;}
+.band-title{
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.68rem; font-weight:700;
+  letter-spacing:.16em; text-transform:uppercase;
+  color:var(--accent);
+  margin:0 0 16px;
+}
+.band-foot{
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.72rem;
+  color:var(--ink-faint);
+  margin:12px 0 0;
+  font-style:italic;
+}
+
+/* timeline */
+.timeline{
+  list-style:none; margin:0; padding:0;
+  display:flex;
+  overflow-x:auto;
+  scrollbar-width:thin;
+  padding-bottom:6px;
+}
+.timeline li{
+  flex:1 0 152px;
+  min-width:152px;
+  position:relative;
+  border-top:2px solid var(--border);
+  padding:18px 14px 0 0;
+}
+.timeline li::before{
+  content:"";
+  position:absolute; top:-6px; left:0;
+  width:10px; height:10px; border-radius:50%;
+  background:var(--bg);
+  border:2px solid var(--accent);
+}
+.timeline li:last-child::before{background:var(--accent);}
+.tl-when{
+  display:block;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.7rem; font-weight:700;
+  letter-spacing:.04em;
+  color:var(--accent-deep);
+  font-variant-numeric:tabular-nums;
+}
+.tl-what{
+  display:block;
+  font-family:"Noto Serif Display","Noto Serif",serif;
+  font-size:.98rem; font-weight:700;
+  line-height:1.35;
+  margin:.25em 0 .2em;
+}
+.tl-note{
+  display:block;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.74rem;
+  line-height:1.5;
+  color:var(--ink-soft);
+}
+
+/* hierarchy diagram */
+.tiers{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; align-items:center; gap:0;}
+.tiers li{
+  width:100%;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:13px 18px;
+  text-align:center;
+}
+.tiers li + li{margin-top:22px; position:relative;}
+.tiers li + li::before{
+  content:"";
+  position:absolute; top:-18px; left:50%;
+  width:2px; height:14px;
+  background:var(--border);
+  transform:translateX(-50%);
+}
+.tier-role{
+  display:block;
+  font-family:"Noto Serif Display","Noto Serif",serif;
+  font-weight:700;
+  font-size:1.02rem;
+  color:var(--accent-deep);
+}
+.tier-desc{
+  display:block;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.78rem;
+  color:var(--ink-soft);
+  line-height:1.5;
+  margin-top:.15em;
+}
+
+/* memo cards */
+.memo{
+  list-style:none; margin:0; padding:0;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(215px,1fr));
+  gap:12px;
+}
+.memo li{
+  background:var(--surface);
+  border:1px solid var(--border-soft);
+  border-top:3px solid var(--accent);
+  border-radius:8px;
+  padding:14px 16px;
+  font-size:.88rem;
+  line-height:1.65;
+}
+
+/* quiz cards */
+.quiz{
+  list-style:none; margin:0; padding:0;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(235px,1fr));
+  gap:14px;
+  counter-reset:q;
+}
+.quiz li{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:16px 18px;
+  display:flex;
+  flex-direction:column;
+}
+.q-num{
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.64rem; font-weight:700;
+  letter-spacing:.14em;
+  color:var(--accent);
+  margin-bottom:.5em;
+}
+.q-text{
+  font-weight:600;
+  font-size:.94rem;
+  line-height:1.6;
+  margin:0 0 auto;
+}
+.quiz details{
+  margin-top:14px;
+  border-top:1px dashed var(--border);
+  padding-top:11px;
+}
+.quiz summary{
+  cursor:pointer;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.78rem;
+  font-weight:600;
+  color:var(--accent-deep);
+  list-style:none;
+}
+.quiz summary::-webkit-details-marker{display:none;}
+.quiz summary::before{content:"▸ "; }
+.quiz details[open] summary::before{content:"▾ ";}
+.quiz details p{
+  margin:.6em 0 0;
+  font-size:.85rem;
+  line-height:1.65;
+  color:var(--ink-soft);
+}
+.quiz summary:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+
+/* next lesson */
+.next{
+  margin-top:3.4em;
+  border-top:2px solid var(--accent);
+  padding-top:20px;
+  text-align:center;
+}
+.next span{
+  display:block;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.66rem; font-weight:700;
+  letter-spacing:.16em; text-transform:uppercase;
+  color:var(--ink-faint);
+  margin-bottom:.5em;
+}
+.next strong{
+  font-family:"Noto Serif Display","Noto Serif",serif;
+  font-size:1.12rem;
+  font-weight:700;
+  color:var(--accent-deep);
+}
+
+/* ── wide layout ──────────────────────────────────────── */
+@media (min-width:700px){
+  .tiers li{width:100%;}
+  .tiers li:nth-child(1){width:56%;}
+  .tiers li:nth-child(2){width:72%;}
+  .tiers li:nth-child(3){width:86%;}
+  .tiers li:nth-child(4){width:100%;}
+}
+
+@media (min-width:980px){
+  body{padding-inline:22px;}
+  .page{
+    grid-template-columns:clamp(118px,14vw,158px) minmax(0,1fr);
+    gap:clamp(24px,3.4vw,36px);
+    max-width:1000px;
+    padding-top:52px;
+  }
+  .rail{
+    display:block;
+    position:sticky;
+    top:calc(env(safe-area-inset-top, 0px) + 28px);
+    align-self:start;
+  }
+  .content{--note-w:clamp(148px,22%,200px);}
+  .prose{max-width:calc(100% - var(--note-w) - 30px);}
+  .sidenote{
+    float:right;
+    clear:right;
+    width:var(--note-w);
+    margin-right:calc(-1 * (var(--note-w) + 30px));
+    margin-top:.35em;
+    margin-bottom:1.6em;
+    background:transparent;
+    border-left:2px solid var(--border);
+    border-radius:0;
+    padding:2px 0 2px 13px;
+  }
+}
+</style>
+
+<div class="progress-wrap"><div class="progress-bar" id="progress"></div></div>
+
+<div class="page">
+
+  <nav class="rail" aria-label="Mục lục bài học">
+    <div class="toc-title">Mục lục</div>
+    <ul class="toc-list">
+      <li><a href="#dong-thoi-gian">Dòng thời gian</a></li>
+      <li><a href="#boi-canh">Bối cảnh</a></li>
+      <li><a href="#dien-bien">Diễn biến chính</a></li>
+      <li><a href="#bo-may">Bộ máy cai trị</a></li>
+      <li><a href="#y-nghia">Ý nghĩa &amp; hệ quả</a></li>
+      <li><a href="#ghi-nho">Ghi nhớ nhanh</a></li>
+      <li><a href="#on-tap">Câu hỏi ôn tập</a></li>
+    </ul>
+  </nav>
+
+  <div class="content">
+
+    <header class="hero">
+      <div class="eyebrow">Lộ trình lịch sử Việt Nam · Bài 3</div>
+      <h1>Thời kỳ Bắc thuộc lần thứ nhất</h1>
+      <div class="period">Khoảng 179 TCN – 40 SCN</div>
+      <p class="legend">
+        <span><span class="nv" style="cursor:default">Tên người</span></span>
+        <span><span class="tg">Mốc thời gian</span></span>
+        <span class="legend-hint">rê chuột vào tên người để xem chú thích</span>
+      </p>
+    </header>
+
+    <section class="band" id="dong-thoi-gian">
+      <h2 class="band-title">Dòng thời gian</h2>
+      <ol class="timeline">
+        <li>
+          <span class="tl-when">khoảng 179 TCN</span>
+          <span class="tl-what">Triệu Đà thôn tính Âu Lạc</span>
+          <span class="tl-note">An Dương Vương thất bại, Âu Lạc sáp nhập vào Nam Việt</span>
+        </li>
+        <li>
+          <span class="tl-when">179 – 111 TCN</span>
+          <span class="tl-what">Thời thuộc Triệu</span>
+          <span class="tl-note">Đất Âu Lạc cũ nằm trong nước Nam Việt</span>
+        </li>
+        <li>
+          <span class="tl-when">111 TCN</span>
+          <span class="tl-what">Nhà Hán diệt Nam Việt</span>
+          <span class="tl-note">Sáp nhập trực tiếp vào đế chế Hán</span>
+        </li>
+        <li>
+          <span class="tl-when">111 TCN</span>
+          <span class="tl-what">Lập quận Giao Chỉ, Cửu Chân, Nhật Nam</span>
+          <span class="tl-note">Đặt quan lại người Hán cai trị</span>
+        </li>
+        <li>
+          <span class="tl-when">40 SCN</span>
+          <span class="tl-what">Khởi nghĩa Hai Bà Trưng</span>
+          <span class="tl-note">Chấm dứt Bắc thuộc lần thứ nhất</span>
+        </li>
+      </ol>
+      <p class="band-foot">Niên đại các sự kiện thời cổ đại thường là con số ước tính, có thể chênh lệch một vài năm giữa các tài liệu.</p>
+    </section>
+
+    <div class="prose">
+
+      <h2 id="boi-canh"><span class="h2-num">Phần một</span>Bối cảnh</h2>
+
+      <aside class="sidenote">
+        <b>Lưu ý về nguồn sử liệu</b>
+        Sự kiện Triệu Đà đánh Âu Lạc còn được kể qua truyền thuyết Mỵ Châu – Trọng Thủy và chiếc nỏ thần, chép trong <i>Lĩnh Nam chích quái</i>. Đây là câu chuyện mang màu sắc huyền thoại, không phải tư liệu lịch sử xác thực; các mốc năm cụ thể của giai đoạn này cũng còn được giới sử học thảo luận, chưa hoàn toàn thống nhất.
+      </aside>
+
+      <p class="lede">Nước Âu Lạc của An Dương Vương không tồn tại được lâu. Chỉ khoảng tám mươi năm sau khi ra đời, nền độc lập non trẻ ấy đã rơi vào tay một thế lực từ phương Bắc, mở ra hơn một nghìn năm dân tộc Việt phải sống dưới ách đô hộ ngoại bang.</p>
+
+      <p><span class="nv" data-note="Quan úy quận Nam Hải thời nhà Tần. Khi nhà Tần suy sụp, ông tự lập nước Nam Việt, đóng đô ở Phiên Ngung (Quảng Châu ngày nay).">Triệu Đà</span> vốn là một viên tướng nhà Tần được cử cai quản quận Nam Hải ở vùng Lĩnh Nam. Khi nhà Tần sụp đổ vào cuối thế kỷ III TCN, nhân lúc Trung Nguyên loạn lạc, ông tự lập ra nước <b>Nam Việt</b>, đóng đô ở Phiên Ngung (nay thuộc Quảng Châu, Trung Quốc), rồi từng bước bành trướng thế lực xuống phía nam.</p>
+
+      <p>Trong khi đó, nước Âu Lạc dưới thời <span class="nv" style="cursor:default">An Dương Vương</span> tuy đã xây thành Cổ Loa kiên cố, nhưng nội bộ có phần chủ quan sau các lần đánh lui quân Triệu. Khoảng năm <span class="tg">179 TCN</span> — một số tài liệu ghi mốc năm hơi khác nhau — Triệu Đà đem quân đánh chiếm được Âu Lạc, chấm dứt sự tồn tại của nhà nước do An Dương Vương dựng nên.</p>
+
+      <h2 id="dien-bien"><span class="h2-num">Phần hai</span>Diễn biến chính</h2>
+
+      <p>Sau khi chiếm được Âu Lạc, Triệu Đà sáp nhập vùng đất này vào nước Nam Việt. Trong giai đoạn đầu, nhà Triệu vẫn giữ hình thức cai trị lỏng lẻo, tiếp tục dùng các <span class="nv" style="cursor:default">Lạc tướng</span> người Việt quản lý ở địa phương, chưa can thiệp sâu vào phong tục bản địa. Nam Việt tồn tại như một nước riêng, do dòng họ Triệu truyền nối, kéo dài khoảng <span class="tg">70 năm</span>.</p>
+
+      <aside class="sidenote">
+        <b>Nam Việt có phải "của người Việt"?</b>
+        Việc xem thời thuộc Triệu là mở đầu Bắc thuộc hay là một triều đại độc lập của người Việt vẫn là vấn đề còn tranh luận trong giới sử học, vì Triệu Đà vốn xuất thân là quan lại nhà Tần. Sách giáo khoa Việt Nam hiện nay nhìn chung xếp giai đoạn này vào thời kỳ mất độc lập.
+      </aside>
+
+      <p>Bước ngoặt lớn xảy đến năm <span class="tg">111 TCN</span>, khi nhà Hán dưới thời <span class="nv" data-note="Hoàng đế nhà Hán, người phát động cuộc chinh phạt tiêu diệt nước Nam Việt năm 111 TCN, sáp nhập vùng đất này vào đế chế Hán.">Hán Vũ Đế</span> đem quân xuống phương nam, tiêu diệt nước Nam Việt. Toàn bộ lãnh thổ Nam Việt, trong đó có đất Âu Lạc cũ, bị sáp nhập trực tiếp vào đế chế Hán. Từ đây, người Việt không còn một nhà nước riêng, dù chỉ mang tính hình thức, mà chính thức trở thành một vùng đất bị cai trị trực tiếp từ phương Bắc.</p>
+
+      <p>Nhà Hán chia vùng đất mới chiếm được thành nhiều quận, gộp chung vào một đơn vị hành chính lớn gọi là <b>bộ Giao Chỉ</b>. Ba quận nằm trên lãnh thổ Việt Nam ngày nay là <b>Giao Chỉ</b> (vùng đồng bằng sông Hồng), <b>Cửu Chân</b> (Thanh Hóa trở vào) và <b>Nhật Nam</b> (từ Hoành Sơn trở vào), lập nên khoảng năm <span class="tg">111 TCN</span>.</p>
+
+      <p>Trong hơn một trăm năm dưới ách đô hộ trực tiếp của nhà Hán, các quan lại người Hán như Thái thú, Thứ sử được cử sang cai trị các quận, trong khi ở cấp thấp hơn, một thời gian dài vẫn tồn tại các Lạc tướng người Việt cha truyền con nối. Chính quyền đô hộ bắt dân bản địa cống nạp sản vật quý như ngọc trai, sừng tê, ngà voi, vàng bạc, đồng thời áp đặt thuế khóa và bắt đi lao dịch nặng nề.</p>
+
+      <p>Đến khoảng năm <span class="tg">34 SCN</span>, <span class="nv" data-note="Thái thú quận Giao Chỉ thời Đông Hán, nổi tiếng tham lam, tàn bạo. Việc ông giết Thi Sách là nguyên nhân trực tiếp châm ngòi cho khởi nghĩa Hai Bà Trưng.">Tô Định</span> được cử làm Thái thú quận Giao Chỉ. Sử sách mô tả ông là người tham lam, cai trị hà khắc, khiến dân chúng oán hận. Việc Tô Định giết <span class="nv" data-note="Chồng của Trưng Trắc, thủ lĩnh địa phương ở Mê Linh. Việc ông bị Tô Định giết được xem là nguyên nhân trực tiếp dẫn tới cuộc khởi nghĩa của Hai Bà Trưng.">Thi Sách</span> — chồng của <span class="nv" style="cursor:default">Trưng Trắc</span> — trở thành giọt nước tràn ly, châm ngòi cho cuộc khởi nghĩa lớn nổ ra vào năm <span class="tg">40 SCN</span>, khép lại thời kỳ Bắc thuộc lần thứ nhất.</p>
+    </div>
+
+    <figure class="band" id="bo-may" style="margin-inline:0;">
+      <figcaption class="band-title">Bộ máy cai trị của nhà Hán</figcaption>
+      <ol class="tiers">
+        <li>
+          <span class="tier-role">Thứ sử bộ Giao Chỉ</span>
+          <span class="tier-desc">Quan lại người Hán, quản lý chung cả bộ gồm nhiều quận</span>
+        </li>
+        <li>
+          <span class="tier-role">Thái thú quận</span>
+          <span class="tier-desc">Cai trị từng quận: Giao Chỉ, Cửu Chân, Nhật Nam…</span>
+        </li>
+        <li>
+          <span class="tier-role">Huyện lệnh · Lạc tướng</span>
+          <span class="tier-desc">Giai đoạn đầu, Lạc tướng người Việt vẫn quản lý cấp huyện</span>
+        </li>
+        <li>
+          <span class="tier-role">Làng xã</span>
+          <span class="tier-desc">Người Việt vẫn giữ nếp sinh hoạt cộng đồng cổ truyền</span>
+        </li>
+      </ol>
+    </figure>
+
+    <div class="prose">
+      <aside class="sidenote">
+        <b>Vừa bị đô hộ, vừa giữ bản sắc</b>
+        Dù chữ Hán, Nho giáo và nhiều phong tục Hán được du nhập, người Việt thời kỳ này vẫn giữ được tiếng nói riêng, tục ăn trầu, nhuộm răng, thờ cúng tổ tiên — nền tảng giúp bản sắc dân tộc không bị đồng hóa hoàn toàn suốt hơn một nghìn năm Bắc thuộc.
+      </aside>
+
+      <p>Về mặt kinh tế, nông nghiệp lúa nước vẫn là hoạt động chính của cư dân, bên cạnh đó nghề thủ công truyền thống như đúc đồng, dệt vải tiếp tục được duy trì, dù chịu sự kiểm soát và bóc lột của chính quyền đô hộ. Một số kỹ thuật canh tác và công cụ từ phương Bắc cũng theo đó du nhập vào, đan xen với nền tảng văn hóa bản địa vốn có từ thời Văn Lang – Âu Lạc.</p>
+
+      <h2 id="y-nghia"><span class="h2-num">Phần ba</span>Ý nghĩa và hệ quả</h2>
+
+      <p>Thời kỳ Bắc thuộc lần thứ nhất đánh dấu lần đầu tiên trong lịch sử, người Việt mất hẳn một nhà nước độc lập của riêng mình, bị đặt dưới sự cai trị trực tiếp của một đế chế phương Bắc rộng lớn và có tổ chức chặt chẽ hơn nhiều so với các thế lực trước đó. Đây là khởi đầu cho một giai đoạn kéo dài hơn một nghìn năm, xen kẽ giữa đô hộ và các cuộc nổi dậy giành độc lập.</p>
+
+      <p>Chính sách bóc lột nặng nề về kinh tế cùng áp lực đồng hóa về văn hóa đã gieo mầm mâu thuẫn sâu sắc giữa người Việt và chính quyền đô hộ. Sự tàn bạo của những viên quan như Tô Định chỉ là giọt nước tràn ly, còn nguyên nhân sâu xa nằm ở chính bản chất của ách đô hộ. Cuộc khởi nghĩa Hai Bà Trưng bùng nổ năm 40 SCN, vì vậy, không phải là một biến cố đơn lẻ mà là kết quả tất yếu của cả một quá trình tích tụ mâu thuẫn, đồng thời cũng là minh chứng đầu tiên cho tinh thần quật khởi của người Việt trước ngoại bang.</p>
+    </div>
+
+    <section class="band" id="ghi-nho">
+      <h2 class="band-title">Ghi nhớ nhanh</h2>
+      <ul class="memo">
+        <li>Khoảng <span class="tg">179 TCN</span>, <span class="nv" style="cursor:default">Triệu Đà</span> đánh chiếm Âu Lạc, sáp nhập vào nước Nam Việt.</li>
+        <li>Năm <span class="tg">111 TCN</span>, nhà Hán diệt Nam Việt, đặt các quận Giao Chỉ, Cửu Chân, Nhật Nam, cai trị trực tiếp.</li>
+        <li>Bộ máy cai trị: Thứ sử – Thái thú – Huyện lệnh/Lạc tướng – làng xã; ban đầu Lạc tướng người Việt vẫn còn ở cấp cơ sở.</li>
+        <li>Chính sách cống nạp, lao dịch nặng nề và áp lực đồng hóa văn hóa là nguyên nhân sâu xa gây bất bình trong dân chúng.</li>
+        <li>Việc <span class="nv" style="cursor:default">Tô Định</span> giết Thi Sách châm ngòi khởi nghĩa <span class="tg">Hai Bà Trưng năm 40 SCN</span>, kết thúc Bắc thuộc lần thứ nhất.</li>
+      </ul>
+    </section>
+
+    <section class="band" id="on-tap">
+      <h2 class="band-title">Câu hỏi ôn tập</h2>
+      <ol class="quiz">
+        <li>
+          <div class="q-num">Câu 1</div>
+          <p class="q-text">Ai là người đánh chiếm Âu Lạc, và sự kiện này xảy ra vào khoảng năm nào?</p>
+          <details><summary>Xem đáp án</summary><p>Triệu Đà, thủ lĩnh nước Nam Việt, đánh chiếm Âu Lạc vào khoảng năm 179 TCN.</p></details>
+        </li>
+        <li>
+          <div class="q-num">Câu 2</div>
+          <p class="q-text">Sau khi diệt Nam Việt năm 111 TCN, nhà Hán tổ chức cai trị vùng đất Việt cổ như thế nào?</p>
+          <details><summary>Xem đáp án</summary><p>Nhà Hán lập bộ Giao Chỉ, trong đó có ba quận trên đất Việt là Giao Chỉ, Cửu Chân, Nhật Nam; đặt Thứ sử, Thái thú người Hán cai trị, còn cấp huyện và làng xã ban đầu vẫn dùng Lạc tướng người Việt.</p></details>
+        </li>
+        <li>
+          <div class="q-num">Câu 3</div>
+          <p class="q-text">Sự kiện nào chấm dứt thời kỳ Bắc thuộc lần thứ nhất, và nguyên nhân trực tiếp là gì?</p>
+          <details><summary>Xem đáp án</summary><p>Khởi nghĩa Hai Bà Trưng năm 40 SCN. Nguyên nhân trực tiếp là việc Thái thú Tô Định giết Thi Sách, chồng của Trưng Trắc, bên cạnh nguyên nhân sâu xa là chính sách cai trị hà khắc, bóc lột của nhà Hán.</p></details>
+        </li>
+      </ol>
+    </section>
+
+    <div class="next">
+      <span>Bài tiếp theo</span>
+      <strong>Khởi nghĩa Hai Bà Trưng</strong><br>
+      <span style="letter-spacing:.04em;text-transform:none;font-size:.8rem;margin-top:.4em;">khoảng 40 SCN – 43 SCN</span>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  /* reading progress */
+  var bar = document.getElementById('progress');
+  function tick(){
+    var h = document.documentElement;
+    var top = h.scrollTop || document.body.scrollTop || window.scrollY || 0;
+    var max = (h.scrollHeight || document.body.scrollHeight) - (h.clientHeight || window.innerHeight);
+    bar.style.width = (max > 0 ? Math.min(100, (top / max) * 100) : 0) + '%';
+  }
+  window.addEventListener('scroll', tick, {passive:true});
+  window.addEventListener('resize', tick);
+  tick();
+
+  /* scroll spy */
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc-list a'));
+  var targets = links.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  if (links.length) links[0].classList.add('is-active');
+  if ('IntersectionObserver' in window && targets.length){
+    var seen = {};
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ seen[e.target.id] = e.isIntersecting ? e.boundingClientRect.top : null; });
+      var activeId = null;
+      for (var i = 0; i < targets.length; i++){
+        var r = targets[i].getBoundingClientRect();
+        if (r.top <= window.innerHeight * 0.35) activeId = targets[i].id;
+      }
+      if (!activeId) activeId = targets[0].id;
+      links.forEach(function(a){
+        a.classList.toggle('is-active', a.getAttribute('href') === '#' + activeId);
+      });
+    }, {rootMargin:'-20% 0px -60% 0px', threshold:[0,1]});
+    targets.forEach(function(t){ io.observe(t); });
+  }
+
+  /* name tooltips */
+  var tip = document.createElement('div');
+  tip.className = 'tip';
+  tip.hidden = true;
+  document.body.appendChild(tip);
+
+  function place(el){
+    tip.textContent = el.getAttribute('data-note');
+    tip.hidden = false;
+    var w = Math.min(280, window.innerWidth - 24);
+    tip.style.width = w + 'px';
+    var r = el.getBoundingClientRect();
+    var left = r.left + r.width / 2 - w / 2;
+    left = Math.max(12, Math.min(left, window.innerWidth - w - 12));
+    tip.style.left = left + 'px';
+    var th = tip.offsetHeight;
+    var top = r.top - th - 10;
+    if (top < 8) top = r.bottom + 10;
+    tip.style.top = top + 'px';
+  }
+  function hide(){ tip.hidden = true; }
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-note]'), function(el){
+    el.setAttribute('tabindex','0');
+    el.addEventListener('mouseenter', function(){ place(el); });
+    el.addEventListener('mouseleave', hide);
+    el.addEventListener('focus', function(){ place(el); });
+    el.addEventListener('blur', hide);
+  });
+  window.addEventListener('scroll', hide, {passive:true});
+})();
+</script>
+
+</body></html>
