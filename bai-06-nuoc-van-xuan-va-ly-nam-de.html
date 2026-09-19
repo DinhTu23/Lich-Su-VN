@@ -1,0 +1,708 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Nước Vạn Xuân và Lý Nam Đế</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Serif+Display:ital,wght@0,500;0,700;1,500&family=Noto+Sans:wght@400;500;600;700&display=swap">
+
+<style>
+/* ── tokens ───────────────────────────────────────────── */
+:root{
+  --bg:#f4ecda;
+  --surface:#fffdf7;
+  --surface-2:#eadfc4;
+  --ink:#2a2015;
+  --ink-soft:#6a5842;
+  --ink-faint:#8b7a61;
+  --border:#d7c4a0;
+  --border-soft:#e4d6b8;
+  --accent:#9c5322;
+  --accent-deep:#6d3813;
+  --name-ink:#2c6136;
+  --name-line:#7fb98c;
+  --marker:#ffdf5e;
+  --marker-ink:#3d2f0a;
+  --shadow:0 1px 2px rgba(74,53,25,.06), 0 8px 24px rgba(74,53,25,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#16120c;
+    --surface:#1f1910;
+    --surface-2:#2a2217;
+    --ink:#ece1cb;
+    --ink-soft:#b7a686;
+    --ink-faint:#8d7d63;
+    --border:#453a25;
+    --border-soft:#372e1e;
+    --accent:#dd9d59;
+    --accent-deep:#f0bd85;
+    --name-ink:#8fd39c;
+    --name-line:#3f6b45;
+    --marker:rgba(226,177,49,.34);
+    --marker-ink:#f6e3ab;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px rgba(0,0,0,.34);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#16120c;
+  --surface:#1f1910;
+  --surface-2:#2a2217;
+  --ink:#ece1cb;
+  --ink-soft:#b7a686;
+  --ink-faint:#8d7d63;
+  --border:#453a25;
+  --border-soft:#372e1e;
+  --accent:#dd9d59;
+  --accent-deep:#f0bd85;
+  --name-ink:#8fd39c;
+  --name-line:#3f6b45;
+  --marker:rgba(226,177,49,.34);
+  --marker-ink:#f6e3ab;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px rgba(0,0,0,.34);
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"Noto Serif",Georgia,"Times New Roman",serif;
+  font-size:17px;
+  line-height:1.8;
+  padding-inline:18px;
+  padding-block:0 56px;
+}
+
+/* ── progress ─────────────────────────────────────────── */
+.progress-wrap{
+  position:fixed; top:0; left:0; right:0; z-index:40;
+  padding-top:env(safe-area-inset-top, 0px);
+  pointer-events:none;
+}
+.progress-bar{height:3px; width:0%; background:var(--accent);}
+
+/* ── page grid ────────────────────────────────────────── */
+.page{
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  gap:0;
+  justify-content:center;
+  margin:0 auto;
+  padding-top:38px;
+}
+.rail{display:none;}
+.content{min-width:0;}
+
+/* ── hero ─────────────────────────────────────────────── */
+.hero{
+  border-bottom:1px solid var(--border);
+  padding-bottom:26px;
+  margin-bottom:34px;
+}
+.eyebrow{
+  font-family:"Noto Sans",system-ui,sans-serif;
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  font-size:.68rem;
+  font-weight:700;
+  color:var(--accent);
+}
+h1{
+  font-family:"Noto Serif Display","Noto Serif",Georgia,serif;
+  font-weight:700;
+  font-size:clamp(1.75rem,5vw,2.6rem);
+  line-height:1.2;
+  margin:.28em 0 .4em;
+  text-wrap:balance;
+  letter-spacing:-.01em;
+}
+.period{
+  display:inline-block;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.82rem;
+  font-weight:600;
+  color:var(--accent-deep);
+  border:1px solid var(--accent);
+  border-radius:999px;
+  padding:.2em .9em;
+}
+.legend{
+  display:flex; flex-wrap:wrap; align-items:center; gap:8px 18px;
+  margin:20px 0 0;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.76rem;
+  color:var(--ink-faint);
+}
+.legend-hint{font-style:italic;}
+
+/* ── highlights ───────────────────────────────────────── */
+.nv{
+  font-weight:600;
+  color:var(--name-ink);
+  border-bottom:2px solid var(--name-line);
+  cursor:help;
+  border-radius:1px;
+}
+.nv:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+.tg{
+  font-weight:600;
+  color:var(--marker-ink);
+  background-image:linear-gradient(transparent 12%, var(--marker) 12%, var(--marker) 92%, transparent 92%);
+  padding:0 .18em;
+  border-radius:2px;
+}
+.tip{
+  position:fixed; z-index:60;
+  background:var(--surface);
+  color:var(--ink);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:10px 13px;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.8rem;
+  line-height:1.55;
+  box-shadow:var(--shadow);
+}
+
+/* ── table of contents rail ───────────────────────────── */
+.toc-title{
+  font-family:"Noto Sans",system-ui,sans-serif;
+  text-transform:uppercase; letter-spacing:.14em;
+  font-size:.64rem; font-weight:700;
+  color:var(--ink-faint);
+  margin-bottom:12px;
+}
+.toc-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:2px;}
+.toc-list a{
+  display:block;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.79rem;
+  line-height:1.4;
+  color:var(--ink-soft);
+  text-decoration:none;
+  padding:6px 0 6px 12px;
+  border-left:2px solid var(--border-soft);
+}
+.toc-list a:hover{color:var(--accent-deep);}
+.toc-list a.is-active{
+  color:var(--accent-deep);
+  font-weight:600;
+  border-left-color:var(--accent);
+}
+
+/* ── prose ────────────────────────────────────────────── */
+.prose{max-width:100%;}
+.prose p{margin:0 0 1.15em;}
+h2{
+  font-family:"Noto Serif Display","Noto Serif",Georgia,serif;
+  font-size:1.42rem;
+  font-weight:700;
+  color:var(--ink);
+  margin:2.6em 0 .85em;
+  text-wrap:balance;
+}
+h2 .h2-num{
+  display:block;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.64rem; font-weight:700;
+  letter-spacing:.16em; text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:.35em;
+}
+.lede{
+  font-family:"Noto Serif Display","Noto Serif",serif;
+  font-size:1.1rem;
+  font-style:italic;
+  color:var(--ink-soft);
+  line-height:1.7;
+}
+
+/* ── sidenote ─────────────────────────────────────────── */
+.sidenote{
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.82rem;
+  line-height:1.65;
+  color:var(--ink-soft);
+  border-left:3px solid var(--accent);
+  background:var(--surface-2);
+  border-radius:0 8px 8px 0;
+  padding:12px 15px;
+  margin:0 0 1.4em;
+}
+.sidenote b{
+  display:block;
+  color:var(--accent-deep);
+  font-weight:700;
+  font-size:.7rem;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  margin-bottom:.4em;
+}
+.sidenote i{font-style:italic;}
+
+/* ── bands (full content width) ───────────────────────── */
+.band{margin:2.8em 0;}
+.band-title{
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.68rem; font-weight:700;
+  letter-spacing:.16em; text-transform:uppercase;
+  color:var(--accent);
+  margin:0 0 16px;
+}
+.band-foot{
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.72rem;
+  color:var(--ink-faint);
+  margin:12px 0 0;
+  font-style:italic;
+}
+
+/* timeline */
+.timeline{
+  list-style:none; margin:0; padding:0;
+  display:flex;
+  overflow-x:auto;
+  scrollbar-width:thin;
+  padding-bottom:6px;
+}
+.timeline li{
+  flex:1 0 152px;
+  min-width:152px;
+  position:relative;
+  border-top:2px solid var(--border);
+  padding:18px 14px 0 0;
+}
+.timeline li::before{
+  content:"";
+  position:absolute; top:-6px; left:0;
+  width:10px; height:10px; border-radius:50%;
+  background:var(--bg);
+  border:2px solid var(--accent);
+}
+.timeline li:last-child::before{background:var(--accent);}
+.tl-when{
+  display:block;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.7rem; font-weight:700;
+  letter-spacing:.04em;
+  color:var(--accent-deep);
+  font-variant-numeric:tabular-nums;
+}
+.tl-what{
+  display:block;
+  font-family:"Noto Serif Display","Noto Serif",serif;
+  font-size:.98rem; font-weight:700;
+  line-height:1.35;
+  margin:.25em 0 .2em;
+}
+.tl-note{
+  display:block;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.74rem;
+  line-height:1.5;
+  color:var(--ink-soft);
+}
+
+/* hierarchy diagram */
+.tiers{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; align-items:center; gap:0;}
+.tiers li{
+  width:100%;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:13px 18px;
+  text-align:center;
+}
+.tiers li + li{margin-top:22px; position:relative;}
+.tiers li + li::before{
+  content:"";
+  position:absolute; top:-18px; left:50%;
+  width:2px; height:14px;
+  background:var(--border);
+  transform:translateX(-50%);
+}
+.tier-role{
+  display:block;
+  font-family:"Noto Serif Display","Noto Serif",serif;
+  font-weight:700;
+  font-size:1.02rem;
+  color:var(--accent-deep);
+}
+.tier-desc{
+  display:block;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.78rem;
+  color:var(--ink-soft);
+  line-height:1.5;
+  margin-top:.15em;
+}
+
+/* memo cards */
+.memo{
+  list-style:none; margin:0; padding:0;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(215px,1fr));
+  gap:12px;
+}
+.memo li{
+  background:var(--surface);
+  border:1px solid var(--border-soft);
+  border-top:3px solid var(--accent);
+  border-radius:8px;
+  padding:14px 16px;
+  font-size:.88rem;
+  line-height:1.65;
+}
+
+/* quiz cards */
+.quiz{
+  list-style:none; margin:0; padding:0;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(235px,1fr));
+  gap:14px;
+  counter-reset:q;
+}
+.quiz li{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:16px 18px;
+  display:flex;
+  flex-direction:column;
+}
+.q-num{
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.64rem; font-weight:700;
+  letter-spacing:.14em;
+  color:var(--accent);
+  margin-bottom:.5em;
+}
+.q-text{
+  font-weight:600;
+  font-size:.94rem;
+  line-height:1.6;
+  margin:0 0 auto;
+}
+.quiz details{
+  margin-top:14px;
+  border-top:1px dashed var(--border);
+  padding-top:11px;
+}
+.quiz summary{
+  cursor:pointer;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.78rem;
+  font-weight:600;
+  color:var(--accent-deep);
+  list-style:none;
+}
+.quiz summary::-webkit-details-marker{display:none;}
+.quiz summary::before{content:"▸ "; }
+.quiz details[open] summary::before{content:"▾ ";}
+.quiz details p{
+  margin:.6em 0 0;
+  font-size:.85rem;
+  line-height:1.65;
+  color:var(--ink-soft);
+}
+.quiz summary:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+
+/* next lesson */
+.next{
+  margin-top:3.4em;
+  border-top:2px solid var(--accent);
+  padding-top:20px;
+  text-align:center;
+}
+.next span{
+  display:block;
+  font-family:"Noto Sans",system-ui,sans-serif;
+  font-size:.66rem; font-weight:700;
+  letter-spacing:.16em; text-transform:uppercase;
+  color:var(--ink-faint);
+  margin-bottom:.5em;
+}
+.next strong{
+  font-family:"Noto Serif Display","Noto Serif",serif;
+  font-size:1.12rem;
+  font-weight:700;
+  color:var(--accent-deep);
+}
+
+/* ── wide layout ──────────────────────────────────────── */
+@media (min-width:700px){
+  .tiers li{width:100%;}
+  .tiers li:nth-child(1){width:56%;}
+  .tiers li:nth-child(2){width:72%;}
+  .tiers li:nth-child(3){width:86%;}
+}
+
+@media (min-width:980px){
+  body{padding-inline:22px;}
+  .page{
+    grid-template-columns:clamp(118px,14vw,158px) minmax(0,1fr);
+    gap:clamp(24px,3.4vw,36px);
+    max-width:1000px;
+    padding-top:52px;
+  }
+  .rail{
+    display:block;
+    position:sticky;
+    top:calc(env(safe-area-inset-top, 0px) + 28px);
+    align-self:start;
+  }
+  .content{--note-w:clamp(148px,22%,200px);}
+  .prose{max-width:calc(100% - var(--note-w) - 30px);}
+  .sidenote{
+    float:right;
+    clear:right;
+    width:var(--note-w);
+    margin-right:calc(-1 * (var(--note-w) + 30px));
+    margin-top:.35em;
+    margin-bottom:1.6em;
+    background:transparent;
+    border-left:2px solid var(--border);
+    border-radius:0;
+    padding:2px 0 2px 13px;
+  }
+}
+</style>
+
+<div class="progress-wrap"><div class="progress-bar" id="progress"></div></div>
+
+<div class="page">
+
+  <nav class="rail" aria-label="Mục lục bài học">
+    <div class="toc-title">Mục lục</div>
+    <ul class="toc-list">
+      <li><a href="#dong-thoi-gian">Dòng thời gian</a></li>
+      <li><a href="#boi-canh">Bối cảnh</a></li>
+      <li><a href="#dien-bien">Diễn biến chính</a></li>
+      <li><a href="#bo-may">Triều đình Vạn Xuân</a></li>
+      <li><a href="#y-nghia">Ý nghĩa &amp; hệ quả</a></li>
+      <li><a href="#ghi-nho">Ghi nhớ nhanh</a></li>
+      <li><a href="#on-tap">Câu hỏi ôn tập</a></li>
+    </ul>
+  </nav>
+
+  <div class="content">
+
+    <header class="hero">
+      <div class="eyebrow">Lộ trình lịch sử Việt Nam · Bài 6</div>
+      <h1>Nước Vạn Xuân và Lý Nam Đế</h1>
+      <div class="period">Khoảng năm 542 – 602</div>
+      <p class="legend">
+        <span><span class="nv" style="cursor:default">Tên người</span></span>
+        <span><span class="tg">Mốc thời gian</span></span>
+        <span class="legend-hint">rê chuột vào tên người để xem chú thích</span>
+      </p>
+    </header>
+
+    <section class="band" id="dong-thoi-gian">
+      <h2 class="band-title">Dòng thời gian</h2>
+      <ol class="timeline">
+        <li>
+          <span class="tl-when">năm 542</span>
+          <span class="tl-what">Lý Bí khởi binh</span>
+          <span class="tl-note">Nổi dậy chống ách đô hộ nhà Lương</span>
+        </li>
+        <li>
+          <span class="tl-when">năm 544</span>
+          <span class="tl-what">Lập nước Vạn Xuân</span>
+          <span class="tl-note">Lý Bí xưng đế, đóng đô vùng cửa sông Tô Lịch</span>
+        </li>
+        <li>
+          <span class="tl-when">545 – 548</span>
+          <span class="tl-what">Nhà Lương phản công</span>
+          <span class="tl-note">Trần Bá Tiên sang đánh; Lý Nam Đế mất năm 548</span>
+        </li>
+        <li>
+          <span class="tl-when">năm 550</span>
+          <span class="tl-what">Triệu Quang Phục thắng trận</span>
+          <span class="tl-note">Đánh bật quân Lương, xưng Triệu Việt Vương</span>
+        </li>
+        <li>
+          <span class="tl-when">571 – 602</span>
+          <span class="tl-what">Tranh ngôi rồi mất nước</span>
+          <span class="tl-note">Lý Phật Tử soán ngôi, sau đầu hàng nhà Tùy</span>
+        </li>
+      </ol>
+      <p class="band-foot">Các mốc năm dưới đây theo <i>Đại Việt sử ký toàn thư</i> và các bộ sử Trung Quốc đương thời (Lương thư, Trần thư); một vài chi tiết về quê quán, niên hiệu vẫn còn được giới nghiên cứu thảo luận.</p>
+    </section>
+
+    <div class="prose">
+
+      <h2 id="boi-canh"><span class="h2-num">Phần một</span>Bối cảnh</h2>
+
+      <aside class="sidenote">
+        <b>Nối tiếp bài trước</b>
+        Bài 5 đã nói tới hơn năm trăm năm Bắc thuộc lần thứ hai, khi đất nước liên tiếp chịu sự cai trị của các triều đại phương Bắc và đã có nhiều cuộc khởi nghĩa nổ ra, tiêu biểu là khởi nghĩa Hai Bà Trưng. Nước Vạn Xuân là lần đầu tiên, sau rất nhiều thế kỷ, người Việt lập lại được một nhà nước độc lập, dù chỉ tồn tại trong một khoảng thời gian không dài.
+      </aside>
+
+      <p class="lede">Đầu thế kỷ VI, vùng đất Giao Châu nằm dưới ách đô hộ của nhà Lương (Nam triều, Trung Quốc), với chính sách cai trị hà khắc và bộ máy quan lại tham lam, sách nhiễu dân chúng.</p>
+
+      <p>Sử cũ chép viên thứ sử Giao Châu bấy giờ là Tiêu Tư cai trị tàn bạo, khiến lòng dân oán hận. Trong bối cảnh đó, <span class="nv" data-note="Người khởi xướng cuộc khởi nghĩa năm 542, sau lên ngôi xưng Lý Nam Đế, lập nước Vạn Xuân. Sử cũ còn chép tên là Lý Bôn.">Lý Bí</span> — một hào trưởng địa phương, từng làm quan nhỏ dưới chính quyền đô hộ rồi bỏ về — đã đứng ra tập hợp lực lượng chống lại nhà Lương. Về quê quán của Lý Bí, sử sách ghi chưa thật thống nhất, phần lớn cho là vùng Thái Bình – Phú Thọ ngày nay, thuộc dòng người Việt đã định cư nhiều đời.</p>
+
+      <p>Tham gia cùng Lý Bí có nhiều hào kiệt khắp nơi, trong đó nổi bật là <span class="nv" data-note="Hào trưởng theo giúp Lý Bí từ những ngày đầu, sau được phong làm Thái phó; cha của Triệu Quang Phục.">Triệu Túc</span>, <span class="nv" data-note="Võ tướng giúp Lý Bí dựng nghiệp, được giao đứng đầu ban võ trong triều đình Vạn Xuân.">Phạm Tu</span> và <span class="nv" data-note="Người có học vấn, giúp Lý Bí về việc chính sự, đứng đầu ban văn trong triều đình Vạn Xuân.">Tinh Thiều</span>.</p>
+
+      <h2 id="dien-bien"><span class="h2-num">Phần hai</span>Diễn biến chính</h2>
+
+      <p>Năm <span class="tg">542</span>, Lý Bí dấy binh khởi nghĩa. Quân khởi nghĩa nhanh chóng đánh chiếm được thành Long Biên, buộc Tiêu Tư phải bỏ chạy về nước. Nhà Lương hai lần cử quân sang đàn áp (cuối năm 542 và đầu năm 543) nhưng đều bị đánh bại.</p>
+
+      <aside class="sidenote">
+        <b>Vì sao gọi là “Vạn Xuân”</b>
+        Theo cách hiểu phổ biến, quốc hiệu Vạn Xuân mang ý nghĩa mong ước đất nước trường tồn qua muôn vạn mùa xuân — thể hiện khát vọng độc lập lâu dài, thoát khỏi vòng đô hộ phương Bắc.
+      </aside>
+
+      <p>Sau các thắng lợi bước đầu, đến năm <span class="tg">544</span>, Lý Bí lên ngôi hoàng đế, tự xưng là <span class="nv" data-note="Danh hiệu Lý Bí tự xưng khi lên ngôi năm 544; 'Nam Đế' hàm ý vị hoàng đế của phương Nam, đối lập với hoàng đế phương Bắc.">Lý Nam Đế</span>, đặt quốc hiệu là <b>Vạn Xuân</b>, niên hiệu Thiên Đức, đóng đô ở vùng cửa sông Tô Lịch (khu vực trung tâm Hà Nội ngày nay). Đây là lần đầu tiên người Việt xưng đế ngang hàng với hoàng đế phương Bắc, thay vì chỉ nhận các tước hiệu vương, hầu như trước đó.</p>
+
+      <p>Tuy nhiên nền độc lập non trẻ không kéo dài được lâu. Năm <span class="tg">545</span>, nhà Lương cử tướng <span class="nv" data-note="Tướng nhà Lương được cử sang đánh dẹp nước Vạn Xuân; sau này trở thành người khai sáng nhà Trần ở Trung Quốc (Nam triều).">Trần Bá Tiên</span> cùng thứ sử Dương Phiêu đem đại quân sang đánh. Quân Vạn Xuân nhiều lần thất thế, Lý Nam Đế phải lui dần, giao lại binh quyền cho Triệu Quang Phục để tổ chức kháng chiến, rồi rút về động Khuất Lão (vùng Tam Nông, Phú Thọ ngày nay). Đến năm <span class="tg">548</span>, Lý Nam Đế mất tại đây, theo sử cũ là do lâm bệnh.</p>
+
+      <p><span class="nv" data-note="Con của Triệu Túc, được Lý Nam Đế giao binh quyền kháng chiến; sau đánh bại quân Lương, xưng vương, sử gọi là Triệu Việt Vương.">Triệu Quang Phục</span> tiếp tục cuộc kháng chiến bằng cách lui về đầm <b>Dạ Trạch</b> (Hưng Yên ngày nay) — một vùng lau sậy, đầm lầy hiểm trở — dùng lối đánh du kích, ban ngày ẩn náu, ban đêm bất ngờ tập kích quân Lương. Đến năm <span class="tg">550</span>, nhân lúc Trần Bá Tiên phải rút quân về nước để đối phó với loạn Hầu Cảnh ở Trung Quốc, Triệu Quang Phục phản công, đánh tan quân Lương còn lại, giành lại quyền tự chủ và xưng là Triệu Việt Vương, đóng đô ở Long Biên.</p>
+
+      <p>Về sau, khoảng năm <span class="tg">571</span>, <span class="nv" data-note="Hậu duệ của Lý Nam Đế, tranh ngôi với Triệu Việt Vương; sau khi thắng, sử gọi là Hậu Lý Nam Đế.">Lý Phật Tử</span> — thuộc dòng dõi Lý Nam Đế — đem quân đánh Triệu Việt Vương để giành lại ngôi vua, sử gọi ông là Hậu Lý Nam Đế. Nước Vạn Xuân do Lý Phật Tử cai quản tồn tại thêm khoảng ba mươi năm, cho đến khi nhà Tùy (đã thống nhất Trung Quốc) đem quân sang xâm lược năm <span class="tg">602</span>. Lý Phật Tử đầu hàng, nước Vạn Xuân chấm dứt, mở đầu một thời kỳ Bắc thuộc mới.</p>
+    </div>
+
+    <figure class="band" id="bo-may" style="margin-inline:0;">
+      <figcaption class="band-title">Triều đình Vạn Xuân buổi đầu (544)</figcaption>
+      <ol class="tiers">
+        <li>
+          <span class="tier-role">Lý Nam Đế</span>
+          <span class="tier-desc">Hoàng đế, đặt quốc hiệu Vạn Xuân, niên hiệu Thiên Đức</span>
+        </li>
+        <li>
+          <span class="tier-role">Triệu Túc — Thái phó</span>
+          <span class="tier-desc">Cố vấn cao cấp, giúp việc trực tiếp cho vua</span>
+        </li>
+        <li>
+          <span class="tier-role">Ban văn (Tinh Thiều) · Ban võ (Phạm Tu)</span>
+          <span class="tier-desc">Hai ban quan phụ trách chính sự và quân đội</span>
+        </li>
+      </ol>
+    </figure>
+
+    <div class="prose">
+      <aside class="sidenote">
+        <b>Chùa Khai Quốc</b>
+        Sử cũ chép Lý Nam Đế cho dựng chùa Khai Quốc gần kinh đô — được xem là tiền thân của chùa Trấn Quốc ở Hà Nội ngày nay, một trong những ngôi chùa cổ nhất còn lại của Việt Nam.
+      </aside>
+
+      <h2 id="y-nghia"><span class="h2-num">Phần ba</span>Ý nghĩa và hệ quả</h2>
+
+      <p>Việc Lý Bí xưng đế, đặt quốc hiệu và niên hiệu riêng năm 544 mang ý nghĩa biểu tượng rất lớn: đây là lần đầu tiên kể từ khi rơi vào ách đô hộ phương Bắc, người Việt dựng lên một nhà nước tự chủ, không chỉ đơn thuần là một cuộc khởi nghĩa nhất thời như trước đó. Việc lập triều đình có quan văn, quan võ, có niên hiệu, có chùa chiền của riêng mình cho thấy ý thức xây dựng một quốc gia độc lập thực sự, chứ không dừng lại ở việc chống đối.</p>
+
+      <p>Cuộc kháng chiến ở đầm Dạ Trạch của Triệu Quang Phục cũng để lại bài học quan trọng về chiến thuật: tận dụng địa hình hiểm trở, đánh lâu dài, chờ thời cơ — một kiểu chiến tranh du kích sẽ còn được nhắc lại nhiều lần trong lịch sử chống ngoại xâm của dân tộc về sau. Dù nước Vạn Xuân cuối cùng vẫn rơi vào tay nhà Tùy năm 602, giai đoạn hơn nửa thế kỷ này vẫn được xem là một mốc son, chứng minh rằng người Việt hoàn toàn có khả năng dựng nước và giữ nước khi có thời cơ.</p>
+    </div>
+
+    <section class="band" id="ghi-nho">
+      <h2 class="band-title">Ghi nhớ nhanh</h2>
+      <ul class="memo">
+        <li>Năm <span class="tg">542</span>, <span class="nv" style="cursor:default">Lý Bí</span> khởi nghĩa chống nhà Lương; đến <span class="tg">544</span> xưng đế, lập nước Vạn Xuân.</li>
+        <li>Vạn Xuân là nhà nước tự chủ đầu tiên có niên hiệu, quốc hiệu riêng sau nhiều thế kỷ Bắc thuộc.</li>
+        <li>Nhà Lương phản công; Lý Nam Đế mất năm 548, giao binh quyền lại cho Triệu Quang Phục.</li>
+        <li>Triệu Quang Phục kháng chiến ở đầm Dạ Trạch, thắng quân Lương năm 550, xưng Triệu Việt Vương.</li>
+        <li>Lý Phật Tử giành lại ngôi năm 571; đến năm <span class="tg">602</span> đầu hàng nhà Tùy, Vạn Xuân chấm dứt.</li>
+      </ul>
+    </section>
+
+    <section class="band" id="on-tap">
+      <h2 class="band-title">Câu hỏi ôn tập</h2>
+      <ol class="quiz">
+        <li>
+          <div class="q-num">Câu 1</div>
+          <p class="q-text">Lý Bí lên ngôi và đặt quốc hiệu Vạn Xuân vào năm nào? Kinh đô đặt ở đâu?</p>
+          <details><summary>Xem đáp án</summary><p>Năm 544; kinh đô đặt ở vùng cửa sông Tô Lịch, khu vực trung tâm Hà Nội ngày nay.</p></details>
+        </li>
+        <li>
+          <div class="q-num">Câu 2</div>
+          <p class="q-text">Sau khi Lý Nam Đế mất, ai là người tiếp tục kháng chiến và bằng cách nào?</p>
+          <details><summary>Xem đáp án</summary><p>Triệu Quang Phục tiếp tục kháng chiến, lui về đầm Dạ Trạch dùng lối đánh du kích, đến năm 550 thì đánh bại quân Lương.</p></details>
+        </li>
+        <li>
+          <div class="q-num">Câu 3</div>
+          <p class="q-text">Nước Vạn Xuân chấm dứt vào năm nào và trong hoàn cảnh nào?</p>
+          <details><summary>Xem đáp án</summary><p>Năm 602, khi nhà Tùy đem quân sang xâm lược; Lý Phật Tử (Hậu Lý Nam Đế) đầu hàng, mở đầu một thời kỳ Bắc thuộc mới.</p></details>
+        </li>
+      </ol>
+    </section>
+
+    <div class="next">
+      <span>Bài tiếp theo</span>
+      <strong>Thời kỳ Bắc thuộc lần thứ ba</strong><br>
+      <span style="letter-spacing:.04em;text-transform:none;font-size:.8rem;margin-top:.4em;">khoảng 602 – 905</span>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  /* reading progress */
+  var bar = document.getElementById('progress');
+  function tick(){
+    var h = document.documentElement;
+    var top = h.scrollTop || document.body.scrollTop || window.scrollY || 0;
+    var max = (h.scrollHeight || document.body.scrollHeight) - (h.clientHeight || window.innerHeight);
+    bar.style.width = (max > 0 ? Math.min(100, (top / max) * 100) : 0) + '%';
+  }
+  window.addEventListener('scroll', tick, {passive:true});
+  window.addEventListener('resize', tick);
+  tick();
+
+  /* scroll spy */
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc-list a'));
+  var targets = links.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  if (links.length) links[0].classList.add('is-active');
+  if ('IntersectionObserver' in window && targets.length){
+    var seen = {};
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ seen[e.target.id] = e.isIntersecting ? e.boundingClientRect.top : null; });
+      var activeId = null;
+      for (var i = 0; i < targets.length; i++){
+        var r = targets[i].getBoundingClientRect();
+        if (r.top <= window.innerHeight * 0.35) activeId = targets[i].id;
+      }
+      if (!activeId) activeId = targets[0].id;
+      links.forEach(function(a){
+        a.classList.toggle('is-active', a.getAttribute('href') === '#' + activeId);
+      });
+    }, {rootMargin:'-20% 0px -60% 0px', threshold:[0,1]});
+    targets.forEach(function(t){ io.observe(t); });
+  }
+
+  /* name tooltips */
+  var tip = document.createElement('div');
+  tip.className = 'tip';
+  tip.hidden = true;
+  document.body.appendChild(tip);
+
+  function place(el){
+    tip.textContent = el.getAttribute('data-note');
+    tip.hidden = false;
+    var w = Math.min(280, window.innerWidth - 24);
+    tip.style.width = w + 'px';
+    var r = el.getBoundingClientRect();
+    var left = r.left + r.width / 2 - w / 2;
+    left = Math.max(12, Math.min(left, window.innerWidth - w - 12));
+    tip.style.left = left + 'px';
+    var th = tip.offsetHeight;
+    var top = r.top - th - 10;
+    if (top < 8) top = r.bottom + 10;
+    tip.style.top = top + 'px';
+  }
+  function hide(){ tip.hidden = true; }
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-note]'), function(el){
+    el.setAttribute('tabindex','0');
+    el.addEventListener('mouseenter', function(){ place(el); });
+    el.addEventListener('mouseleave', hide);
+    el.addEventListener('focus', function(){ place(el); });
+    el.addEventListener('blur', hide);
+  });
+  window.addEventListener('scroll', hide, {passive:true});
+})();
+</script>
+
+</body></html>
